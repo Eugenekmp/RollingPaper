@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DetailCardList from "../components/DetailCardList";
 import axios from "../api/axios";
+import DetailButton from "../components/DetailButton";
 
 function DetailPage() {
   const { id } = useParams();
@@ -9,11 +10,13 @@ function DetailPage() {
     type: "color",
     value: "#FFFFFF",
   });
+  const [editMode, setEditMode] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const backgroundData = async () => {
       try {
-        const response = await axios.get(`${id}/`);
+        const response = await axios.get(`recipients/${id}/`);
         const data = response.data;
 
         if (data.backgroundImageURL) {
@@ -35,6 +38,20 @@ function DetailPage() {
     backgroundData();
   }, [id]);
 
+  // 페이지 삭제
+  const handleDeletePage = async () => {
+    const confirmDelete = window.confirm("정말 삭제하시겠습니까?");
+
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(`recipients/${id}/`);
+      navigate("/list");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       {/* 헤더 컴포넌트 */}
@@ -51,7 +68,15 @@ function DetailPage() {
               }
         }
       >
-        <DetailCardList />
+        <DetailButton onClick={() => setEditMode((prev) => !prev)}>
+          {editMode ? "저장하기" : "편집하기"}
+        </DetailButton>
+
+        {editMode && (
+          <DetailButton onClick={handleDeletePage}>삭제하기</DetailButton>
+        )}
+
+        <DetailCardList editMode={editMode} />
       </div>
     </>
   );

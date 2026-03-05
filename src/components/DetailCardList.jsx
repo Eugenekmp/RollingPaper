@@ -4,14 +4,14 @@ import DetailCardListItemAdd from "./DetailCardListItemAdd";
 import DetailCardListItem from "./DetailCardListItem";
 import axios from "../api/axios";
 
-function DetailCardList() {
+function DetailCardList({ editMode }) {
   const { id } = useParams();
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const recentMessagesData = async () => {
       try {
-        const response = await axios.get(`${id}/`);
+        const response = await axios.get(`recipients/${id}/`);
         const data = response.data;
 
         setCards(data.recentMessages);
@@ -23,12 +23,31 @@ function DetailCardList() {
     recentMessagesData();
   }, [id]);
 
+  // 카드 삭제
+  const handleDeleteCard = async (cardId) => {
+    const confirmDelete = window.confirm("정말 삭제하시겠습니까?");
+
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(`messages/${cardId}/`);
+      setCards((prevCards) => prevCards.filter((card) => card.id !== cardId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
-      <DetailCardListItemAdd id={id} />
+      {!editMode && <DetailCardListItemAdd id={id} />}
 
       {cards.map((card) => (
-        <DetailCardListItem key={card.id} card={card} />
+        <DetailCardListItem
+          key={card.id}
+          card={card}
+          editMode={editMode}
+          onDelete={handleDeleteCard}
+        />
       ))}
     </div>
   );

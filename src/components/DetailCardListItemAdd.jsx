@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import DetailButton from "./DetailButton";
 
 function DetailCardListItemAdd({ id }) {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ function DetailCardListItemAdd({ id }) {
 
   return (
     <div>
-      <span onClick={handleAddCard}>+</span>
+      <DetailButton onClick={handleAddCard}>+</DetailButton>
     </div>
   );
 }
