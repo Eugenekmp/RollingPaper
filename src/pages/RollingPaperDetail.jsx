@@ -15,7 +15,7 @@ const RollingPaperDetail = () => {
       const response = await axios.get(`https://rolling-api.vercel.app/23-5/recipients/${recipientId}/reactions/`);
       setEmojis(response.data?.results || []); 
     } catch (error) {
-      console.error('이모지 데이터를 불러오는데 실패했습니다:', error);
+      console.error('이모지 데이터를 불러오는데 실패:', error);
     }
   };
 
@@ -47,8 +47,6 @@ const RollingPaperDetail = () => {
 
   return (
     <div>
-      <h2>롤링 페이퍼 상세</h2>
-      
       <div>
         <EmojiBadgeList emojiData={emojis} />
 
@@ -58,7 +56,7 @@ const RollingPaperDetail = () => {
           </button>
 
           {isShowPicker && (
-            <div style={{ position: 'absolute', top: '40px', right: '0', zIndex: 100 }}>
+            <div>
               <EmojiPicker onEmojiClick={handleEmojiClick} />
             </div>
           )}
