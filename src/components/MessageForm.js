@@ -10,7 +10,7 @@ function MessageForm() {
   const [profileImageURL, setProfileImageURL] = useState(
     "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
   );
-  const [relationship, setRelationship] = useState("지인");
+  const [relationship, setRelationship] = useState("친구");
   const [content, setContent] = useState("열심히 일하는 모습 멋있습니다");
   const [font, setFont] = useState("Noto Sans");
   const [isLoading, setIsLoading] = useState(false);
