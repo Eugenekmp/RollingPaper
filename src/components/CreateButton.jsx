@@ -4,11 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateButton = () => {
   const navigate = useNavigate();
-  //버튼 클릭 시 페이지 이동을 처리하는 핸들러 함수
-  const handleCreatePageNavigate = () => {
-    navigate('/post');
-  };
-  
+
   return (
     <button onClick={() => navigate('/post')}>
       롤링 페이퍼 만들기

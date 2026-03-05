@@ -1,6 +1,6 @@
 //롤링페이퍼 상세 정보와 이모지 반응을 조회 및 추가하는 페이지 컴포넌트
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useParams } from 'react-router-dom';
 import EmojiBadgeList from '../components/EmojiBadgeList';
 import EmojiPicker from 'emoji-picker-react';
@@ -14,7 +14,7 @@ const RollingPaperDetail = () => {
   //서버로부터 이모지 반응 데이터를 가져오는 함수
   const fetchEmojiData = async () => {
     try {
-      const response = await axios.get(`https://rolling-api.vercel.app/23-5/recipients/${recipientId}/reactions/`);
+      const response = await axios.get(`/${recipientId}/reactions/`);
       setEmojis(response.data?.results || []);
     } catch (error) {
       console.error('이모지 데이터를 불러오는데 실패:', error);
@@ -26,7 +26,7 @@ const RollingPaperDetail = () => {
     const selectedEmoji = emojiObject.emoji;
 
     try {
-      await axios.post(`https://rolling-api.vercel.app/23-5/recipients/${recipientId}/reactions/`, {
+      await axios.post(`/${recipientId}/reactions/`, {
         emoji: selectedEmoji,
         type: "increase"
       });
