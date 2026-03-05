@@ -11,7 +11,7 @@ const EmojiBadgeList = ({ emojiData }) => {
     <div>
       {topEmojis.map((emoji) => (
         //리액트 리스트 렌더링 시 고유 key 값 부여
-        <div key={id}>
+        <div key={emoji.id}>
           <span>{emoji.emoji}</span>
           <span>{emoji.count}</span>
         </div>
