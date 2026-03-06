@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Router>
       <MainHeader /> 
-      
+
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/post" element={<div>롤링 페이퍼 만들기 페이지</div>} />
