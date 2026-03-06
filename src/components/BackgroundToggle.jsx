@@ -1,22 +1,16 @@
 import ToggleButton from "./BackgroundToggleButton";
-import { useState } from 'react';
 
-function BackgroundToggle(){
-    const [backgroundOption, setBackgroundOption] = useState('color')
-
-    const handleToggleClick = (mode) => {
-        setBackgroundOption(mode);
-    }
+function BackgroundToggle({ backgroundMode, handleToggleClick }){
 
     return(
         <div>
             <ToggleButton
                 text='컬러'
-                isActive={backgroundOption==='color'}
+                isActive={backgroundMode==='color'}
                 onClick={()=>handleToggleClick('color')}  />
             <ToggleButton
                 text='이미지'
-                isActive={backgroundOption==='img'}
+                isActive={backgroundMode==='img'}
                 onClick={()=>handleToggleClick('img')}  />
         </div>
     )
