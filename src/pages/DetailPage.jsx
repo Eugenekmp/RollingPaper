@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import DetailCardList from "../components/DetailCardList";
 import axios from "../api/axios";
 import DetailButton from "../components/DetailButton";
+import EmojiReaction from '../components/EmojiReaction';
 
 function DetailPage() {
   const { id } = useParams();
@@ -68,6 +69,8 @@ function DetailPage() {
               }
         }
       >
+        <EmojiReaction recipientId={id} />
+
         <DetailButton onClick={() => setEditMode((prev) => !prev)}>
           {editMode ? "저장하기" : "편집하기"}
         </DetailButton>
