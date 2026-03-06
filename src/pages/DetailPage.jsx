@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import DetailCardList from "../components/DetailCardList";
 import axios from "../api/axios";
 import DetailButton from "../components/DetailButton";
@@ -10,8 +10,9 @@ function DetailPage() {
     type: "color",
     value: "#FFFFFF",
   });
-  const [editMode, setEditMode] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const editMode = location.pathname.includes("/edit");
 
   useEffect(() => {
     const backgroundData = async () => {
@@ -59,8 +60,6 @@ function DetailPage() {
     } else {
       navigate(`/post/${id}/edit`);
     }
-
-    setEditMode((prev) => !prev);
   };
 
   return (
