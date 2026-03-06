@@ -1,7 +1,7 @@
-import axios from 'axios';
+import Axios from "axios";
 
-const instance = axios.create({
-  baseURL: 'https://rolling-api.vercel.app/23-5/recipients', 
+const axios = Axios.create({
+  baseURL: "https://rolling-api.vercel.app/23-5/",
 });
 
-export default instance;
+export default axios;
