@@ -1,12 +1,19 @@
 import DetailButton from "./DetailButton";
 
-function DetailCardListItem({ card, editMode, onDelete }) {
+function DetailCardListItem({ card, editMode, onDelete, onClick }) {
   const formatted = card.createdAt.slice(0, 10).replace(/-/g, "."); // 날짜 형식 변경
 
   return (
-    <div>
+    <div onClick={onClick}>
       {editMode && (
-        <DetailButton onClick={() => onDelete(card.id)}>휴지통</DetailButton>
+        <DetailButton
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(card.id);
+          }}
+        >
+          휴지통
+        </DetailButton>
       )}
 
       <div>
