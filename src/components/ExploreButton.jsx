@@ -9,7 +9,7 @@ const ExploreButton = ({ to, children }) => {
     navigate(to);
   };
 
-  return <button onClick={handleListPageNavigate}>{children}</button>
+  return <button onClick={handleListPageNavigate}>{children}</button>;
 };
 
 export default ExploreButton;
