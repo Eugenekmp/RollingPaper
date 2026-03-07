@@ -1,5 +1,5 @@
-//클릭 시 롤링 페이퍼 목록 페이지('/list')로 이동하는 버튼 컴포넌트
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ExploreButton = ({ to, children }) => {
   const navigate = useNavigate();
