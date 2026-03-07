@@ -82,12 +82,10 @@ function RollingPaperList({ title, sort }) {
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && searchTerm.trim() !== "") {
-      // 검색 결과 페이지로 이동 (쿼리 스트링 활용)
       navigate(`/search?keyword=${encodeURIComponent(searchTerm)}`);
     }
   };
 
-  //현재 인덱스부터 4개만 잘라서 화면에 표시
   const visibleLists = allLists.slice(currentIndex, currentIndex + VIEW_COUNT);
   const isNoPrevData = currentIndex === 0;
   const isNoNextData = currentIndex >= totalCount - VIEW_COUNT;
@@ -98,10 +96,10 @@ function RollingPaperList({ title, sort }) {
         <h1>
           {title} (전체: {totalCount}개 / 로드됨: {allLists.length}개)
         </h1>
-        {title === "최근에 만든 롤링 페이퍼 ⭐️️" && (
+        {title === "인기 롤링 페이퍼🔥" && (
           <input
             type="text"
-            placeholder="검색어를 입력하세요..."
+            placeholder="검색어를 입력하세요."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleSearch}
