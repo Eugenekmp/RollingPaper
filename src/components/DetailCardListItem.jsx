@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import DetailButton from "./DetailButton";
 
 const fontMap = {
@@ -24,7 +25,10 @@ function DetailCardListItem({ card, editMode, onDelete }) {
           <p>{card.relationship}</p>
         </div>
       </div>
-      <p style={{ fontFamily: fontMap[card.font] }}>{card.content}</p>
+      <div
+        style={{ fontFamily: fontMap[card.font] }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(card.content) }}
+      />
       <p>{formatted}</p>
     </div>
   );

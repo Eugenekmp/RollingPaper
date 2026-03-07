@@ -26,7 +26,7 @@ function TextEditor({ onChange, font }) {
   useEffect(() => {
     if (quill) {
       quill.on("text-change", () => {
-        onChange(quill.getText());
+        onChange(quill.getSemanticHTML());
       });
     }
   }, [quill, onChange]);

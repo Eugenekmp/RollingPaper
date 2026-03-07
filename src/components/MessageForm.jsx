@@ -3,7 +3,7 @@ import Button from "./Button";
 import Selection from "./Selection";
 import TextEditor from "./TextEditor";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function MessageForm() {
   const { id } = useParams();
@@ -13,9 +13,10 @@ function MessageForm() {
   );
   const [relationship, setRelationship] = useState("친구");
   const [content, setContent] = useState("");
-  const [font, setFont] = useState("");
+  const [font, setFont] = useState("Noto Sans");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   //필수 입력값이 없으면 버튼 비활성화
   const isDisabled = false;
@@ -37,7 +38,7 @@ function MessageForm() {
         `https://rolling-api.vercel.app/23-5/recipients/${id}/messages/`,
         { sender, profileImageURL, relationship, content, font },
       );
-      console.log(response.data);
+      navigate(`/post/${id}`);
     } catch (err) {
       setError(err.message);
     } finally {
