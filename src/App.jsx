@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainHeader from "./components/MainHeader";
 import MainPage from "./pages/MainPage";
@@ -8,8 +9,8 @@ import MessagePage from "./pages/MessagePage";
 
 const App = () => {
   return (
-    <Router>
-      <MainHeader />
+    <>
+      <MainHeader /> 
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/post" element={<Post />} />
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="/post/:id/message" element={<MessagePage />} />
         <Route path="/list" element={<ListPage />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 
