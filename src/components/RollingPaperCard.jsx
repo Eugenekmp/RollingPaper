@@ -1,15 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const CardWrapper = styled.div`
+const StyledCardWrapper = styled.div`
   cursor: pointer;
   width: 275px;
   height: 260px;
-  border: 1px solid var(--black);
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 16px;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 
   background-color: ${({ $colorName }) => colorMatching[$colorName] || '#ee3131'};
 `;
+
+
 
 const colorMatching = {
   beige: '#FFE2AD',
@@ -26,7 +29,7 @@ function RollingPaperCard({ list }) {
   };
 
   return (
-    <CardWrapper onClick={handleCardClick} $colorName={list.backgroundColor} >
+    <StyledCardWrapper onClick={handleCardClick} $colorName={list.backgroundColor} >
       <h2>{list.name}</h2>
       {/* <span>{list.messageCount}</span> */}
       {/* <ul>
@@ -44,7 +47,7 @@ function RollingPaperCard({ list }) {
           </li>
         ))}
       </ul> */}
-    </CardWrapper>
+    </StyledCardWrapper>
   );
 }
 
