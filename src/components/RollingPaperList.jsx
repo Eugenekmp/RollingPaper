@@ -14,9 +14,14 @@ const StyledCarouselWindow = styled.div`
   flex-direction: row;
 `;
 
-const NavButton = styled.button`
+const StyledListTitle=styled.h1`
+font:var(--font-24-bold);
+`
+
+const StyledNavButton = styled.button`
   visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
 `;
+
 
 function RollingPaperList({ title, sort }) {
   const [allLists, setAllLists] = useState([]); // 전체 데이터를 담는 저장소
@@ -93,9 +98,9 @@ function RollingPaperList({ title, sort }) {
   return (
     <div>
       <div>
-        <h1>
-          {title} (전체: {totalCount}개 / 로드됨: {allLists.length}개)
-        </h1>
+        <StyledListTitle>
+          {title}
+        </StyledListTitle>
         {title === "인기 롤링 페이퍼🔥" && (
           <input
             type="text"
@@ -107,9 +112,9 @@ function RollingPaperList({ title, sort }) {
         )}
       </div>
       <StyledCarouselWindow>
-        <NavButton onClick={handlePrev} $isHidden={isNoPrevData}>
+        <StyledNavButton onClick={handlePrev} $isHidden={isNoPrevData}>
           <span>&lt;</span>
-        </NavButton>
+        </StyledNavButton>
         <StyledCardList>
           {visibleLists.map((list) => (
             <li key={list.id}>
@@ -117,9 +122,9 @@ function RollingPaperList({ title, sort }) {
             </li>
           ))}
         </StyledCardList>
-        <NavButton onClick={handleNext} $isHidden={isNoNextData}>
+        <StyledNavButton onClick={handleNext} $isHidden={isNoNextData}>
           <span>&gt;</span>
-        </NavButton>
+        </StyledNavButton>
       </StyledCarouselWindow>
     </div>
   );
