@@ -7,7 +7,7 @@ import styled from "styled-components";
 const CardGrid = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px; /* 카드 사이의 간격 */
+  gap: 20px;
   list-style: none;
   padding: 0;
   margin: 20px 0;
@@ -31,20 +31,20 @@ function SearchList() {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        // 1. 우선 서버에서 데이터를 가져옵니다 (search 파라미터는 제외하거나 그대로 둠)
         const response = await getRecipients({
-          limit: 100, // 검색을 위해 평소보다 넉넉하게 데이터를 가져옵니다.
+          limit: 100, 
           sort: sort === "like" ? "like" : "",
         });
 
-        // 2. 가져온 데이터에서 keyword가 포함된 항목만 필터링합니다.
-        const filteredData = response.results.filter((item) =>
-          // 이름(name) 필드가 있다면 검색어와 비교 (대소문자 구분 없이)
-          item.name.toLowerCase().includes(keywordFromUrl.toLowerCase()),
-        );
+        let finalData = response.results;
 
-        console.log("필터링된 결과:", filteredData);
-        setAllData(filteredData); // 필터링된 데이터만 상태에 저장
+        if (!sort && keywordFromUrl) {
+          finalData = response.results.filter((item) =>
+            item.name.toLowerCase().includes(keywordFromUrl.toLowerCase())
+          );
+        }
+
+        setAllData(finalData);
       } catch (error) {
         console.error("데이터 불러오기 실패:", error);
       } finally {
@@ -56,8 +56,15 @@ function SearchList() {
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && inputValue.trim() !== "") {
+      setSort("");
       navigate(`/search?keyword=${encodeURIComponent(inputValue)}`);
     }
+  };
+
+  const handleSortChange = (newSort) => {
+    setSort(newSort);
+    setInputValue("");
+    navigate("/search");
   };
 
   return (
@@ -73,20 +80,22 @@ function SearchList() {
       </div>
 
       <div>
-        <button onClick={() => setSort("")}>최신순</button>
-        <button onClick={() => setSort("like")}>인기순</button>
+        <button onClick={() => handleSortChange("")}>최신순</button>
+        <button onClick={() => handleSortChange("like")}>인기순</button>
       </div>
 
       <h2>
-        "{keywordFromUrl}" 검색 결과: {allData.length}개 (
-        {sort === "like" ? "인기순" : "최신순"})
+        {keywordFromUrl ? `"${keywordFromUrl}" 검색 결과: ` : "전체 목록: "} 
+        {/* 전체 데이터 중 12개만 보여주고 있음을 명시 */}
+        {Math.min(allData.length, 12)} / {allData.length}개 ({sort === "like" ? "인기순" : "최신순"})
       </h2>
 
       {isLoading ? (
         <div>로딩 중...</div>
       ) : (
         <CardGrid>
-          {allData.map((list) => (
+          {/* 💡 .slice(0, 12)를 추가해서 배열의 앞에서부터 12개만 가져옵니다. */}
+          {allData.slice(0, 12).map((list) => (
             <li key={list.id}>
               <RollingPaperCard list={list} />
             </li>
