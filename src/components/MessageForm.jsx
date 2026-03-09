@@ -11,7 +11,7 @@ function MessageForm() {
   const { id } = useParams();
   const [sender, setSender] = useState("");
   const [profileImageURL, setProfileImageURL] = useState(
-    "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    "https://www.civictheatre.ie/wp-content/uploads/2016/05/blank-profile-picture-973460_960_720-400x400.png",
   );
   const [relationship, setRelationship] = useState("지인");
   const [content, setContent] = useState("");
@@ -60,7 +60,11 @@ function MessageForm() {
       <br />
       <br />
 
-      <ProfileImgContainer label="프로필 이미지" />
+      <ProfileImgContainer
+        label="프로필 이미지"
+        value={profileImageURL}
+        changeImg={setProfileImageURL}
+      />
       <br />
       <br />
 
