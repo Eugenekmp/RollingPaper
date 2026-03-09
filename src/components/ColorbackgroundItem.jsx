@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 const ColorbackgroundItem = styled.div`
-    width: 168px;
-    height: 168px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 166.5px;
+    height: 166.5px;
     background-color: ${({ $hexColorCode }) => $hexColorCode};
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.08);
