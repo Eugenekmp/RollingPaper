@@ -1,9 +1,10 @@
+import styled from "styled-components";
 import Input from "./Input";
 
 function InputForm({ label, placeholder, value, onChange}){
     return(
         <div>
-            <div>{label}</div>
+            <Label>{label}</Label>
             <Input
                 placeholder={placeholder}
                 value={value}
@@ -11,5 +12,15 @@ function InputForm({ label, placeholder, value, onChange}){
         </div>
     )   
 }
+
+const Label = styled.div`
+    color: #181818;
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 42px; /* 175% */
+    letter-spacing: -0.24px; 
+`
 
 export default InputForm;
