@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputForm from "../components/InputForm";
 import SelectBackground from "../components/SelectBackgound";
 import SubmitButton from "../components/SubmitButton";
@@ -11,22 +11,33 @@ function Post({ className }){
     const [userSelectedColor, setUserSelectedColor] = useState('beige');
     const [userSelectedImg, setUserSelectedImg] = useState(0);
     const [backgroundMode, setBackgroundMode] = useState('color')
+    const [bgImgList, setBgImgList] = useState([]);
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        axios.get('https://rolling-api.vercel.app/background-images/')
+        .then( response => {setBgImgList(response.data.imageUrls)
+            console.log("이미지 리스트 데이터:", response.data.imageUrls);
+        } )
+    },[]);
+
+
     const handleSubmit = async () => {
-        //데이터 객체
+        //데이터 구조
         const postData = {
             team: '23-5',
             name: receiverName,
             backgroundColor: userSelectedColor || 'beige',
-            backgroundImageURL: backgroundMode === 'img' ? userSelectedImg : null
+            backgroundImageURL: backgroundMode === 'img' ? bgImgList[userSelectedImg] : null,
         };
 
+        //배경 .... backgroundMode가 img이면 이미지 URL 전달
         try {
             const response = await axios.post(
                 `https://rolling-api.vercel.app/23-5/recipients/`,
                 postData
             );
+            console.log(response.data.backgroundImageURL)
 
             if (response.status === 201) {
                 alert("성공적으로 생성되었습니다!");
@@ -44,6 +55,7 @@ function Post({ className }){
                 userSelectedImg,
                 setUserSelectedColor,
                 setUserSelectedImg,
+                bgImgList,
             }}
             >
                 <InputForm
