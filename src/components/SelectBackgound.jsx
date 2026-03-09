@@ -4,6 +4,7 @@ import ColorbackgroundList from "./ColorbackgroundList";
 import ImgbackgroundList from "./ImgbackgroundList";
 import axios from "axios";
 import MyContext from "./MyContext";
+import styled from "styled-components";
 
 function SelectBackground({ backgroundMode, setBackgroundMode }){
     const [bgImgList, setBgImgList] = useState([]);
@@ -29,8 +30,8 @@ function SelectBackground({ backgroundMode, setBackgroundMode }){
     }
     return(
         <div>
-            <h2>배경화면을 선택해주세요.</h2>
-            컬러를 선택하거나, 이미지를 선택하실 수 있습니다.
+            <PlzSelectbg> 배경화면을 선택해 주세요.</PlzSelectbg>
+            <SubPlzSelectbg>컬러를 선택하거나, 이미지를 선택하실 수 있습니다.</SubPlzSelectbg>
             <div>
                 <BackgroundToggle
                     backgroundMode={backgroundMode}
@@ -43,5 +44,25 @@ function SelectBackground({ backgroundMode, setBackgroundMode }){
         </div>
     )
 }
+
+const PlzSelectbg = styled.div`
+    color: var(--gray-900, #181818);
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -0.24px;
+`
+
+const SubPlzSelectbg = styled.span`
+    color: var(--gray-500, #555);
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+    letter-spacing: -0.16px;
+`
 
 export default SelectBackground;

@@ -33,7 +33,7 @@ function Post({ className }){
                 receiverName ? navigate(`/post/${response.data.id}`) : ''
             } 
         } catch (err) {
-            alert('생성에 실패했습니다.')
+            alert('생성에 실패했습니다.');
         }
 }
 
