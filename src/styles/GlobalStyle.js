@@ -105,20 +105,20 @@ button {
     --error: #DC3A3A;
     --surface: #F6F8FF;
 
-    --font-28-bold: 700 28px/1.5;
-    --font-24-bold: 700 24px/1.5;
-    --font-24-regular: 400 24px/1.5; 
-    --font-20-bold: 700 20px/1.5;
-    --font-20-regular: 400 20px/1.5;
-    --font-18-bold: 700 18px/1.5;
-    --font-18-regular: 400 18px/1.5; 
-    --font-16-bold: 700 16px/1.5; 
-    --font-16-regular: 400 16px/1.5; 
-    --font-15-regular: 400 15px/1.5;
-    --font-15-bold: 700 15px/1.5;
-    --font-14-regular: 400 14px/1.5;
-    --font-14-bold: 700 14px/1.5;
-    --font-12-regular: 400 12px/1.5;
+    --font-28-bold: 700 28px/1.5 Pretendard;
+    --font-24-bold: 700 24px/1.5 Pretendard;
+    --font-24-regular: 400 24px/1.5 Pretendard; 
+    --font-20-bold: 700 20px/1.5 Pretendard;
+    --font-20-regular: 400 20px/1.5 Pretendard;
+    --font-18-bold: 700 18px/1.5 Pretendard;
+    --font-18-regular: 400 18px/1.5 Pretendard; 
+    --font-16-bold: 700 16px/1.5 Pretendard; 
+    --font-16-regular: 400 16px/1.5 Pretendard; 
+    --font-15-regular: 400 15px/1.5 Pretendard;
+    --font-15-bold: 700 15px/1.5 Pretendard;
+    --font-14-regular: 400 14px/1.5 Pretendard;
+    --font-14-bold: 700 14px/1.5 Pretendard;
+    --font-12-regular: 400 12px/1.5 Pretendard;
 }
 
 * {

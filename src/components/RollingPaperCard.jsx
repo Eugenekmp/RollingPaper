@@ -12,7 +12,9 @@ const StyledCardWrapper = styled.div`
   background-color: ${({ $colorName }) => colorMatching[$colorName] || '#ee3131'};
 `;
 
-
+const StyledNameTitle=styled.h2`
+ font: var(--font-24-bold);
+`
 
 const colorMatching = {
   beige: '#FFE2AD',
@@ -30,7 +32,7 @@ function RollingPaperCard({ list }) {
 
   return (
     <StyledCardWrapper onClick={handleCardClick} $colorName={list.backgroundColor} >
-      <h2>{list.name}</h2>
+      <StyledNameTitle>{list.name}</StyledNameTitle>
       {/* <span>{list.messageCount}</span> */}
       {/* <ul>
         {list.recentMessages.map((message) => (
