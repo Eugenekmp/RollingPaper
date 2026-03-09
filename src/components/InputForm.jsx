@@ -1,12 +1,15 @@
 import Input from "./Input";
 
-function InputForm({ onChange, value, label, placeholder }) {
-  return (
-    <div>
-      <div>{label}</div>
-      <Input value={value} onChange={onChange} placeholder={placeholder} />
-    </div>
-  );
+function InputForm({ label, placeholder, value, onChange}){
+    return(
+        <div>
+            <div>{label}</div>
+            <Input
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}/>
+        </div>
+    )   
 }
 
 export default InputForm;

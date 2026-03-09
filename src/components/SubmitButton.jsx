@@ -1,22 +1,24 @@
-import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import styled from "styled-components";
 
-function SubmitButton(){
-    const nevigate = useNavigate();
+function SubmitButton({ value, onSubmit }){
+   
+    const isButtonDisabled = value.trim().length === 0;
 
-    // 롤링 페이퍼 생성하기 페이지에서 생성 버튼 클릭 시 작동하는 함수
-    const handleClickCreatePaperButton = () =>{
-        //페이지 이동
-        nevigate('/post/${id}')
-    }
     return(
-        <CreateButton onClick={handleClickCreatePaperButton}/>
+        <CreateButton
+            disabled={isButtonDisabled}
+            onClick={onSubmit}/>
     )
 }
 
 const CreateButton = styled(Button)`
     margin: 24px;
+    &:disabled {
+        background-color: #CCCCCC;
+        color: #999999;
+        cursor: not-allowed;
+    }
 `
 
 export default SubmitButton;

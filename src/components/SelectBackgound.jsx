@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BackgroundToggle from "./BackgroundToggle";
 import ColorbackgroundList from "./ColorbackgroundList";
 import ImgbackgroundList from "./ImgbackgroundList";
+import axios from "axios";
+import MyContext from "./MyContext";
 
-function SelectBackground(){
-    const [backgroundMode, setBackgroundMode] = useState('color')
+function SelectBackground({ backgroundMode, setBackgroundMode }){
+    const [bgImgList, setBgImgList] = useState([]);
+    const { userSelectedColor, userSelectedImg, setUserSelectedImg, setUserSelectedColor} = useContext(MyContext);
+
+    //사용자가 색깔을 누르면 userSelectedImg 바꾸는 함수
+    const handleClickImg = (imgNumber)=> {
+        setUserSelectedImg(imgNumber);
+    }
+
+    //사용자가 색깔을 누르면 userSelectedColor 바꾸는 함수
+    const handleClickColor = (color)=> {
+        setUserSelectedColor(color);
+    }
+
+    useEffect(()=>{
+        axios.get('https://rolling-api.vercel.app/background-images/')
+        .then( response => setBgImgList(response.data.imageUrls) )
+    },[]);
 
     const handleToggleClick = (mode) => {
         setBackgroundMode(mode);
@@ -16,7 +34,9 @@ function SelectBackground(){
             <div>
                 <BackgroundToggle backgroundMode={backgroundMode} handleToggleClick={handleToggleClick}/>
                 {/*color값이 true이면 ColorbackgroundList, false이면 ImgbackgroundList */}
-                {backgroundMode === 'color' ? <ColorbackgroundList /> : <ImgbackgroundList />}
+                {backgroundMode === 'color' ? 
+                <ColorbackgroundList onClickColor={handleClickColor} userSelectedColor={userSelectedColor}/> 
+                : <ImgbackgroundList bgImgList={bgImgList} onClickImg={handleClickImg} userSelectedImg={userSelectedImg}/>}
             </div>
         </div>
     )
