@@ -72,14 +72,14 @@ const Content = styled.div`
   line-height: 28px;
   overflow: hidden;
 
-  strong {
-    font-weight: bold !important;
+  & strong {
+    font-weight: bold;
   }
-  em {
-    font-style: italic !important;
+  & em {
+    font-style: italic;
   }
-  u {
-    text-decoration: underline !important;
+  & u {
+    text-decoration: underline;
   }
 `;
 const CreatedAt = styled.p`

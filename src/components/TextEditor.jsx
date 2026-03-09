@@ -4,14 +4,14 @@ import styled from "styled-components";
 import "quill/dist/quill.snow.css";
 
 const EditorWrapper = styled.div`
-  .ql-editor strong {
-    font-weight: bold !important;
+  & .ql-editor strong {
+    font-weight: bold;
   }
-  .ql-editor em {
-    font-style: italic !important;
+  & .ql-editor em {
+    font-style: italic;
   }
-  .ql-editor u {
-    text-decoration: underline !important;
+  & .ql-editor u {
+    text-decoration: underline;
   }
 `;
 
