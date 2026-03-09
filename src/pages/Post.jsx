@@ -33,7 +33,7 @@ function Post({ className }){
                 receiverName ? navigate(`/post/${response.data.id}`) : ''
             } 
         } catch (err) {
-            alert('생성에 실패했습니다.')
+            alert('생성에 실패했습니다.');
         }
 }
 
@@ -50,10 +50,10 @@ function Post({ className }){
                     label='To.'
                     placeholder='받는 사람 이름을 입력해 주세요.'
                     value={receiverName}
-                    onChange={setReceiverName}/>
+                    onChange={setReceiverName} />
                 <SelectBackground 
                     backgroundMode={backgroundMode}
-                    setBackgroundMode={setBackgroundMode}/>
+                    setBackgroundMode={setBackgroundMode} />
                 <SubmitButton
                     className={className}
                     value={receiverName}
