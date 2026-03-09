@@ -5,6 +5,7 @@ import TextEditor from "./TextEditor";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import InputForm from "./InputForm";
+import ProfileImgContainer from "./ProfileImgContainer";
 
 function MessageForm() {
   const { id } = useParams();
@@ -58,6 +59,11 @@ function MessageForm() {
       />
       <br />
       <br />
+
+      <ProfileImgContainer label="프로필 이미지" />
+      <br />
+      <br />
+
       <Selection
         value={relationship}
         onChange={setRelationship}
