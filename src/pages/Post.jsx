@@ -50,10 +50,10 @@ function Post({ className }){
                     label='To.'
                     placeholder='받는 사람 이름을 입력해 주세요.'
                     value={receiverName}
-                    onChange={setReceiverName}/>
+                    onChange={setReceiverName} />
                 <SelectBackground 
                     backgroundMode={backgroundMode}
-                    setBackgroundMode={setBackgroundMode}/>
+                    setBackgroundMode={setBackgroundMode} />
                 <SubmitButton
                     className={className}
                     value={receiverName}
