@@ -16,8 +16,13 @@ const NameH1 = styled.h1`
   font-weight: var(--bold);
   color: var(--gray-800);
 `;
-const CardInfo = styled.h1`
+const CardInfo = styled.div`
   display: flex;
+`;
+const DetailMessageCount = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 11px;
 `;
 
 function DetailHeader({ card }) {
@@ -27,7 +32,9 @@ function DetailHeader({ card }) {
     <DetailHeaderDiv>
       <NameH1>To. {card.name}</NameH1>
       <CardInfo>
-        <MessageCount card={card} />
+        <DetailMessageCount>
+          <MessageCount card={card} />
+        </DetailMessageCount>
         <EmojiReaction recipientId={card.id} />
         <ShareDropdown postData={card.recipientData} />
       </CardInfo>
