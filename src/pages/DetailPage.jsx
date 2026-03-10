@@ -123,7 +123,7 @@ function DetailPage() {
             )}
 
             <EditButtonStyle onClick={handleEditToggle}>
-              {editMode ? "돌아가기" : "편집하기"}
+              {editMode ? "편집완료" : "편집하기"}
             </EditButtonStyle>
           </ButtonDiv>
 
