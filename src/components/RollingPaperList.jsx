@@ -12,7 +12,7 @@ function RollingPaperList({ title, sort }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalCount, setTotalCount] = useState(0); //총 리스트 갯수
   const VIEW_COUNT = 4; // 화면에 보이는 개수
-  const FETCH_LIMIT = 12; // 한 번에 가져올 양
+  const FETCH_LIMIT = 100; // 한 번에 가져올 양
 
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
@@ -49,10 +49,11 @@ function RollingPaperList({ title, sort }) {
 
   // 버튼 클릭 시 이동 로직
   const handleNext = () => {
-    const nextIndex = currentIndex + 1;
+    const nextIndex = currentIndex + VIEW_COUNT;
+    const PREFETCH_THRESHOLD = VIEW_COUNT * 2;
 
     if (
-      nextIndex + VIEW_COUNT > allLists.length &&
+      nextIndex + PREFETCH_THRESHOLD > allLists.length &&
       allLists.length < totalCount
     ) {
       loadMoreLists(allLists.length, false);
@@ -65,7 +66,7 @@ function RollingPaperList({ title, sort }) {
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
+      setCurrentIndex((prev) => prev - VIEW_COUNT);
     }
   };
 
@@ -88,7 +89,7 @@ function RollingPaperList({ title, sort }) {
           {title === "인기 롤링 페이퍼🔥" && (
             <StyledSearchInput
               type="text"
-              placeholder="검색어를 입력하세요."
+              placeholder="검색어를 입력 후 Enter를 눌러주세요."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={handleSearch}
