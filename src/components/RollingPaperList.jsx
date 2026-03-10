@@ -5,9 +5,43 @@ import styled from "styled-components";
 import { getRecipients } from "../api/index";
 import ArrowRight from "../assets/arrow_right.svg";
 import ArrowLeft from "../assets/arrow_left.svg";
-
+import SearchIc from "../assets/ic_search.svg";
 const StyledSection = styled.div`
   margin-top: 50px;
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+`;
+const StyledListHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StyledSearchWrapper = styled.div`
+  position: relative;
+`;
+
+const StyledSearchIcon = styled.img`
+  position: absolute;
+  top: 50%;
+  transform: translate(50%, -50%);
+`;
+
+const StyledSearchInput = styled.input`
+  font: var(--font-16-regular);
+  width: 325px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: var(--purple-100);
+  border: none;
+  padding: 9px 16px;
+  padding-left: 37px;
+
+  &:focus {
+    outline: 1px solid var(--purple-600);
+  }
 `;
 
 const StyledCardList = styled.ul`
@@ -128,18 +162,21 @@ function RollingPaperList({ title, sort }) {
 
   return (
     <StyledSection>
-      <div>
+      <StyledListHeader>
         <StyledListTitle>{title}</StyledListTitle>
-        {title === "인기 롤링 페이퍼🔥" && (
-          <input
-            type="text"
-            placeholder="검색어를 입력하세요."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleSearch}
-          />
-        )}
-      </div>
+        <StyledSearchWrapper>
+          <StyledSearchIcon src={SearchIc} alt="검색 돋보기" />
+          {title === "인기 롤링 페이퍼🔥" && (
+            <StyledSearchInput
+              type="text"
+              placeholder="검색어를 입력하세요."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleSearch}
+            />
+          )}
+        </StyledSearchWrapper>
+      </StyledListHeader>
       <StyledCarouselWindow>
         <StyledLeftButton onClick={handlePrev} $isHidden={isNoPrevData}>
           <span>
