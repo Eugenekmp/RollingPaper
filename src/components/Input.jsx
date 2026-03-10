@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import MyContext from "./MyContext";
 
 function Input({ placeholder, value, onChange, onEnterPress }) {
+  const { makeToast } = useContext(MyContext);
   const [isNull, setIsNull] = useState(false);
   const inputRef = useRef(null);
   
@@ -19,6 +21,7 @@ function Input({ placeholder, value, onChange, onEnterPress }) {
   const handleInputFocusout = (e) => {
     if (e.target.value === "") {
       setIsNull(true);
+      makeToast('성함을 입력해주세요')
     } else {
       setIsNull(false);
     }
