@@ -32,23 +32,18 @@ function SearchList() {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        // 1. 최대한 많은 데이터를 가져오기 위해 limit을 크게 설정합니다.
-        // sort가 'like'라면 서버가 인기순으로 정렬된 데이터를 줍니다.
         const response = await getRecipients({
-          limit: 500, // 전체 데이터를 가져오기 위해 충분히 큰 값 설정
+          limit: 500,
           sort: sort === "like" ? "like" : "",
         });
 
         let fetchedData = response.results;
 
-        // 2. 키워드가 있다면 가져온 전체 데이터에서 필터링을 수행합니다.
         if (keywordFromUrl) {
           fetchedData = fetchedData.filter((item) =>
             item.name.toLowerCase().includes(keywordFromUrl.toLowerCase()),
           );
         }
-
-        // 3. 최신순 정렬일 경우 (서버 기본값이 최신순이 아닐 수 있으므로 클라이언트 정렬 권장)
         if (sort === "") {
           fetchedData = [...fetchedData].sort((a, b) => b.id - a.id);
         }
@@ -62,7 +57,7 @@ function SearchList() {
     };
 
     fetchData();
-  }, [sort, keywordFromUrl]); // sort나 URL 키워드가 바뀔 때마다 실행
+  }, [sort, keywordFromUrl]);
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && inputValue.trim() !== "") {
