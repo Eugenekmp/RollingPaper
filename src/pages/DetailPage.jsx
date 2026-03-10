@@ -10,7 +10,7 @@ import axios from "../api/axios";
 const BackgroundDiv = styled.div`
   background-size: cover;
   background-position: center;
-  
+
   // backgound를 받아서 color인지 검사하고 분기
   ${({ background }) =>
     background.type === "color"
@@ -51,11 +51,11 @@ const DeleteButtonStyle = styled(DetailButton)`
 `;
 
 const colorMatching = {
-  'beige' : '#FFE2AD',
-  'purple' : '#ECD9FF',
-  'blue' : '#B1E4FF',
-  'green' : 'D0F5C3',
-}
+  beige: "#FFE2AD",
+  purple: "#ECD9FF",
+  blue: "#B1E4FF",
+  green: "#D0F5C3",
+};
 
 function DetailPage() {
   const { id } = useParams();
@@ -77,7 +77,6 @@ function DetailPage() {
 
         setCards(data);
 
-        //
         if (data.backgroundImageURL) {
           setBackground({
             type: "image",
