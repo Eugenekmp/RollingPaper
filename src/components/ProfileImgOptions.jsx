@@ -1,6 +1,4 @@
 function ProfileImgOptions({ changeImg }) {
-  const BASIC_URL = "https://i.pravatar.cc/150?img=";
-
   const IMG_LIST = [
     "https://i.pravatar.cc/150?img=70",
     "https://i.pravatar.cc/150?img=46",
