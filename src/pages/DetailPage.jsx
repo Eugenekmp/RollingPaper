@@ -9,7 +9,8 @@ import axios from "../api/axios";
 const BackgroundDiv = styled.div`
   background-size: cover;
   background-position: center;
-
+  
+  // backgound를 받아서 color인지 검사하고 분기
   ${({ background }) =>
     background.type === "color"
       ? `background-color: ${background.value};`
@@ -48,6 +49,13 @@ const DeleteButtonStyle = styled(DetailButton)`
   }
 `;
 
+const colorMatching = {
+  'beige' : '#FFE2AD',
+  'purple' : '#ECD9FF',
+  'blue' : '#B1E4FF',
+  'green' : 'D0F5C3',
+}
+
 function DetailPage() {
   const { id } = useParams();
   const [background, setBackground] = useState({
@@ -67,6 +75,7 @@ function DetailPage() {
 
         setCards(data);
 
+        //
         if (data.backgroundImageURL) {
           setBackground({
             type: "image",
@@ -75,7 +84,7 @@ function DetailPage() {
         } else {
           setBackground({
             type: "color",
-            value: data.backgroundColor,
+            value: colorMatching[data.backgroundColor],
           });
         }
       } catch (error) {
@@ -123,7 +132,7 @@ function DetailPage() {
             )}
 
             <EditButtonStyle onClick={handleEditToggle}>
-              {editMode ? "돌아가기" : "편집하기"}
+              {editMode ? "편집완료" : "편집하기"}
             </EditButtonStyle>
           </ButtonDiv>
 

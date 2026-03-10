@@ -1,10 +1,6 @@
 import styled from "styled-components";
+import MessageCountText from './MessageCountText';
 
-const MessageCountDiv = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 11px;
-`;
 const ProfileList = styled.ul`
   display: flex;
 `;
@@ -35,13 +31,6 @@ const ProfileImg = styled.img`
   width: 100%;
   height: 100%;
 `;
-const TotalCountP = styled.p`
-  font-size: var(--font-18);
-  color: var(--gray-900);
-`;
-const TotalCount = styled.span`
-  font-weight: var(--bold);
-`;
 
 function MessageCount({ card }) {
   const maxCount = 3;
@@ -49,7 +38,7 @@ function MessageCount({ card }) {
   const remainingCount = card.messageCount - maxCount;
 
   return (
-    <MessageCountDiv>
+    <>
       <ProfileList>
         {visibleCount.map((card) => (
           <ProfileListLi key={card.id}>
@@ -58,10 +47,8 @@ function MessageCount({ card }) {
         ))}
         {remainingCount > 0 && <ProfileListLi>+{remainingCount}</ProfileListLi>}
       </ProfileList>
-      <TotalCountP>
-        <TotalCount>{card.messageCount}</TotalCount>명이 작성했어요!
-      </TotalCountP>
-    </MessageCountDiv>
+      <MessageCountText card={card}/>
+    </>
   );
 }
 

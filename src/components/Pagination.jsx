@@ -1,32 +1,5 @@
 import styled from "styled-components";
 
-const PageButton = styled.button`
-  border: 1px solid #ddd;
-  padding: 8px 12px;
-  background: ${(props) => (props.$active ? "#007bff" : "#fff")};
-  color: ${(props) => (props.$active ? "#fff" : "#333")};
-  cursor: pointer;
-  border-radius: 4px;
-
-  &:disabled {
-    background: #f5f5f5;
-    color: #ccc;
-    cursor: not-allowed;
-  }
-
-  &:hover:not(:disabled) {
-    background: ${(props) => (props.$active ? "#0056b3" : "#f0f0f0")};
-  }
-`;
-
-const PaginationNav = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 40px 0;
-`;
-
 function Pagination({ totalCount, limit, currentPage, onPageChange }) {
   const totalPages = Math.ceil(totalCount / limit);
   if (totalPages === 0) return null;
@@ -59,11 +32,36 @@ function Pagination({ totalCount, limit, currentPage, onPageChange }) {
         </PageButton>
       ))}
       {endPage < totalPages && (
-        <PageButton onClick={() => onPageChange(endPage + 1)}>
-          &gt;
-        </PageButton>
+        <PageButton onClick={() => onPageChange(endPage + 1)}>&gt;</PageButton>
       )}
     </PaginationNav>
   );
 }
+
+const PageButton = styled.button`
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  background: ${(props) => (props.$active ? "#007bff" : "#fff")};
+  color: ${(props) => (props.$active ? "#fff" : "#333")};
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:disabled {
+    background: #f5f5f5;
+    color: #ccc;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: ${(props) => (props.$active ? "#0056b3" : "#f0f0f0")};
+  }
+`;
+
+const PaginationNav = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 40px 0;
+`;
 export default Pagination;
