@@ -11,7 +11,7 @@ function MessageForm() {
   const { id } = useParams();
   const [sender, setSender] = useState("");
   const [profileImageURL, setProfileImageURL] = useState(
-    "https://www.civictheatre.ie/wp-content/uploads/2016/05/blank-profile-picture-973460_960_720-400x400.png",
+    "https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/sprint-proj-image/default_avatar.png",
   );
   const [relationship, setRelationship] = useState("지인");
   const [content, setContent] = useState("");
