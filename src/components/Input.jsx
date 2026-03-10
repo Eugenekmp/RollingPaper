@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 function Input({ placeholder, value, onChange, onEnterPress }) {
   const [isNull, setIsNull] = useState(false);
+  const inputRef = useRef(null);
+  
+  //컴포넌트가 마운트 될때 input에 focus
+  useEffect(()=>{
+    inputRef.current.focus();
+  },[]);
 
   const handleChange = (e) => {
     const nextValue = e.target.value;
@@ -20,6 +26,7 @@ function Input({ placeholder, value, onChange, onEnterPress }) {
 
   return (
     <InputBox
+      ref={inputRef}
       value={value}
       onChange={handleChange}
       placeholder={isNull ? "값을 입력해주세요." : placeholder}
