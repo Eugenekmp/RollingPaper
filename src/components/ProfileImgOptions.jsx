@@ -22,6 +22,7 @@ function ProfileImgOptions({ changeImg }) {
           src={url}
           alt={`프로필${index + 1}`}
           onClick={handleChange}
+          style={{ cursor: "pointer" }}
         />
       ))}
     </div>
