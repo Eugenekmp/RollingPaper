@@ -5,15 +5,6 @@ import RollingPaperCard from "./RollingPaperCard";
 import Pagination from "./Pagination";
 import styled from "styled-components";
 
-const CardGrid = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-`;
-
 function SearchList() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -23,13 +14,13 @@ function SearchList() {
   const [allData, setAllData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sort, setSort] = useState("");
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const LIMIT = 12;
 
   useEffect(() => {
     setInputValue(keywordFromUrl);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   }, [keywordFromUrl]);
 
   useEffect(() => {
@@ -48,7 +39,7 @@ function SearchList() {
         let finalData = response.results;
         if (!sort && keywordFromUrl) {
           finalData = response.results.filter((item) =>
-            item.name.toLowerCase().includes(keywordFromUrl.toLowerCase())
+            item.name.toLowerCase().includes(keywordFromUrl.toLowerCase()),
           );
         }
         setAllData(finalData);
@@ -95,7 +86,7 @@ function SearchList() {
       </div>
 
       <h2>
-        {keywordFromUrl ? `"${keywordFromUrl}" 검색 결과: ` : "전체 목록: "} 
+        {keywordFromUrl ? `"${keywordFromUrl}" 검색 결과: ` : "전체 목록: "}
         {allData.length}개 ({sort === "like" ? "인기순" : "최신순"})
       </h2>
 
@@ -124,5 +115,14 @@ function SearchList() {
     </div>
   );
 }
+
+const CardGrid = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+`;
 
 export default SearchList;

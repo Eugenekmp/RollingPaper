@@ -6,87 +6,6 @@ import { getRecipients } from "../api/index";
 import ArrowRight from "../assets/arrow_right.svg";
 import ArrowLeft from "../assets/arrow_left.svg";
 import SearchIc from "../assets/ic_search.svg";
-const StyledSection = styled.div`
-  margin-top: 50px;
-  flex-direction: column;
-  gap: 16px;
-  display: flex;
-`;
-const StyledListHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const StyledSearchWrapper = styled.div`
-  position: relative;
-`;
-
-const StyledSearchIcon = styled.img`
-  position: absolute;
-  top: 50%;
-  transform: translate(50%, -50%);
-`;
-
-const StyledSearchInput = styled.input`
-  font: var(--font-16-regular);
-  width: 325px;
-  height: 42px;
-  border-radius: 12px;
-  background-color: var(--purple-100);
-  border: none;
-  padding: 9px 16px;
-  padding-left: 37px;
-
-  &:focus {
-    outline: 1px solid var(--purple-600);
-  }
-`;
-
-const StyledCardList = styled.ul`
-  display: flex;
-  gap: 20px;
-  flex-direction: row;
-`;
-const StyledCarouselWindow = styled.div`
-  display: flex;
-  flex-direction: row;
-  position: relative;
-`;
-
-const StyledListTitle = styled.h1`
-  font: var(--font-24-bold);
-`;
-
-const StyledLeftButton = styled.button`
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  right: 100%;
-  top: 50%;
-  transform: translate(50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: var(--white);
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
-
-  visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
-`;
-const StyledRightButton = styled.button`
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  left: 100%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: var(--white);
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
-
-  visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
-`;
 
 function RollingPaperList({ title, sort }) {
   const [allLists, setAllLists] = useState([]); // 전체 데이터를 담는 저장소
@@ -199,5 +118,87 @@ function RollingPaperList({ title, sort }) {
     </StyledSection>
   );
 }
+
+const StyledSection = styled.div`
+  margin-top: 50px;
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+`;
+const StyledListHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StyledSearchWrapper = styled.div`
+  position: relative;
+`;
+
+const StyledSearchIcon = styled.img`
+  position: absolute;
+  top: 50%;
+  transform: translate(50%, -50%);
+`;
+
+const StyledSearchInput = styled.input`
+  font: var(--font-16-regular);
+  width: 325px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: var(--purple-100);
+  border: none;
+  padding: 9px 16px;
+  padding-left: 37px;
+
+  &:focus {
+    outline: 1px solid var(--purple-600);
+  }
+`;
+
+const StyledCardList = styled.ul`
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+`;
+const StyledCarouselWindow = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: relative;
+`;
+
+const StyledListTitle = styled.h1`
+  font: var(--font-24-bold);
+`;
+
+const StyledLeftButton = styled.button`
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  right: 100%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: var(--white);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+
+  visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
+`;
+const StyledRightButton = styled.button`
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  left: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: var(--white);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+
+  visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
+`;
 
 export default RollingPaperList;
