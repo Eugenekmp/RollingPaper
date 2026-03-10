@@ -4,6 +4,7 @@ import styled from "styled-components";
 import DetailCardList from "../components/DetailCardList";
 import DetailButton from "../components/DetailButton";
 import DetailHeader from "../components/DetailHeader";
+import useConfirm from "../hooks/useConfirm";
 import axios from "../api/axios";
 
 const BackgroundDiv = styled.div`
@@ -66,6 +67,7 @@ function DetailPage() {
   const location = useLocation();
   const editMode = location.pathname.includes("/edit");
   const [cards, setCards] = useState(null);
+  const { confirm, ConfirmComponent } = useConfirm();
 
   useEffect(() => {
     const backgroundData = async () => {
@@ -97,7 +99,7 @@ function DetailPage() {
 
   // 페이지 삭제
   const handleDeletePage = async () => {
-    const confirmDelete = window.confirm("롤링페이퍼를 정말 삭제하시겠습니까?");
+    const confirmDelete = await confirm("롤링페이퍼를 정말 삭제하시겠습니까?");
 
     if (!confirmDelete) return;
 
@@ -139,6 +141,8 @@ function DetailPage() {
           <DetailCardList editMode={editMode} />
         </DetailBodyDiv>
       </BackgroundDiv>
+
+      {ConfirmComponent}
     </>
   );
 }
