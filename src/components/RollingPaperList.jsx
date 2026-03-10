@@ -85,15 +85,17 @@ function RollingPaperList({ title, sort }) {
       <StyledListHeader>
         <StyledListTitle>{title}</StyledListTitle>
         <StyledSearchWrapper>
-          <StyledSearchIcon src={SearchIc} alt="검색 돋보기" />
           {title === "인기 롤링 페이퍼🔥" && (
-            <StyledSearchInput
-              type="text"
-              placeholder="검색어를 입력 후 Enter를 눌러주세요."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleSearch}
-            />
+            <>
+              <StyledSearchIcon src={SearchIc} alt="검색 돋보기" />
+              <StyledSearchInput
+                type="text"
+                placeholder="검색어를 입력 후 Enter를 눌러주세요."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearch}
+              />
+            </>
           )}
         </StyledSearchWrapper>
       </StyledListHeader>
