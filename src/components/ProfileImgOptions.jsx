@@ -20,19 +20,37 @@ function ProfileImgOptions({ changeImg }) {
   };
 
   return (
-    <div>
-      {IMG_LIST.map((url, index) => (
-        <Img
-          key={index}
-          src={url}
-          alt={`프로필${index + 1}`}
-          onClick={handleChange}
-          style={{ cursor: "pointer" }}
-        />
-      ))}
-    </div>
+    <StyledOptionsWrapper>
+      <StyledDescription>프로필 이미지를 선택해주세요!</StyledDescription>
+      <div>
+        {IMG_LIST.map((url, index) => (
+          <Img
+            key={index}
+            src={url}
+            alt={`프로필${index + 1}`}
+            onClick={handleChange}
+            style={{ cursor: "pointer" }}
+          />
+        ))}
+      </div>
+    </StyledOptionsWrapper>
   );
 }
+
+const StyledOptionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 94px;
+`;
+
+const StyledDescription = styled.p`
+  color: #555555;
+  font-weight: 400;
+  font-family: Pretendard;
+  font-size: 16px;
+  line-height: 26px;
+`;
 
 const Img = styled.img`
   width: 56px;
