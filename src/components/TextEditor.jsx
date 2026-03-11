@@ -42,12 +42,12 @@ function TextEditor({ onChange, font }) {
   }, [font, quillRef]);
 
   return (
-    <>
+    <div>
       <label>내용을 입력해 주세요</label>
       <ContentWrapper>
         <div ref={quillRef} />
       </ContentWrapper>
-    </>
+    </div>
   );
 }
 

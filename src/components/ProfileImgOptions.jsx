@@ -1,11 +1,17 @@
+import styled from "styled-components";
+
 function ProfileImgOptions({ changeImg }) {
   const IMG_LIST = [
-    "https://i.pravatar.cc/150?img=70",
-    "https://i.pravatar.cc/150?img=46",
-    "https://i.pravatar.cc/150?img=35",
-    "https://i.pravatar.cc/150?img=12",
-    "https://i.pravatar.cc/150?img=16",
-    "https://i.pravatar.cc/150?img=4",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Bella",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Charlie",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Daisy",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Ethan",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Freya",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=George",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Hannah",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Ivan",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Julia",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Kevin",
   ];
 
   const handleChange = (e) => {
@@ -16,7 +22,7 @@ function ProfileImgOptions({ changeImg }) {
   return (
     <div>
       {IMG_LIST.map((url, index) => (
-        <img
+        <Img
           key={index}
           src={url}
           alt={`프로필${index + 1}`}
@@ -27,5 +33,13 @@ function ProfileImgOptions({ changeImg }) {
     </div>
   );
 }
+
+const Img = styled.img`
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  border: 1px solid grey;
+  margin-right: 5px;
+`;
 
 export default ProfileImgOptions;

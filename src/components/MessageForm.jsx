@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import InputForm from "./InputForm";
 import ProfileImgContainer from "./ProfileImgContainer";
+import styled from "styled-components";
 
 function MessageForm() {
   const { id } = useParams();
@@ -37,23 +38,19 @@ function MessageForm() {
   };
 
   return (
-    <div>
+    <Container>
       <InputForm
         onChange={setSender}
         label="FROM"
         placeholder="이름을 입력해주세요"
         value={sender}
       />
-      <br />
-      <br />
 
       <ProfileImgContainer
         label="프로필 이미지"
         value={profileImageURL}
         changeImg={setProfileImageURL}
       />
-      <br />
-      <br />
 
       <Selection
         value={relationship}
@@ -62,22 +59,25 @@ function MessageForm() {
       >
         상대와의 관계
       </Selection>
-      <br />
-      <br />
 
       <TextEditor onChange={setContent} font={font} />
-      <br />
-      <br />
 
       <Selection value={font} onChange={setFont} type={"font"}>
         폰트 선택
       </Selection>
-      <br />
-      <br />
 
       <Button onClick={handleSubmit} disabled={isDisabled} />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  width: 720px;
+  height: 944px;
+  margin: 47px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`;
 
 export default MessageForm;
