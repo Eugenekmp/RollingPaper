@@ -17,6 +17,10 @@ const Button = styled(CreateMessageButton)`
   border: none;
   cursor: pointer;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:hover:not(:disabled),
   &:active:not(:disabled) {
     background-color: #7615d6;
