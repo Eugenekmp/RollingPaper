@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 function ProfileImgOptions({ changeImg }) {
   const IMG_LIST = [
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Bella",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka",
     "https://api.dicebear.com/7.x/adventurer/svg?seed=Charlie",
     "https://api.dicebear.com/7.x/adventurer/svg?seed=Daisy",
     "https://api.dicebear.com/7.x/adventurer/svg?seed=Ethan",
@@ -10,7 +10,7 @@ function ProfileImgOptions({ changeImg }) {
     "https://api.dicebear.com/7.x/adventurer/svg?seed=George",
     "https://api.dicebear.com/7.x/adventurer/svg?seed=Hannah",
     "https://api.dicebear.com/7.x/adventurer/svg?seed=Ivan",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Julia",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Zoe",
     "https://api.dicebear.com/7.x/adventurer/svg?seed=Kevin",
   ];
 
