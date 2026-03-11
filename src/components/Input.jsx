@@ -32,7 +32,7 @@ function Input({ placeholder, value, onChange, onEnterPress }) {
       ref={inputRef}
       value={value}
       onChange={handleChange}
-      placeholder={isNull ? "값을 입력해주세요." : placeholder}
+      placeholder={isNull ? "성함을 입력해주세요." : placeholder}
       onBlur={handleInputFocusout}
       $isNull={isNull}
       onKeyDown={onEnterPress}
