@@ -14,10 +14,17 @@ function SubmitButton({ value, onSubmit }){
 
 const CreateButton = styled(Button)`
     margin: 24px;
+    
     &:disabled {
         background-color: #CCCCCC;
         color: #999999;
         cursor: not-allowed;
+    }
+
+    @media screen and (max-width: 480px) {
+        // position: fixed;
+        // bottom: 0;
+        // left: 0;
     }
 `
 

@@ -7,6 +7,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ToastBox from "../components/ToastBox";
+import { device } from "../styles/media";
+import StyleInputForm from "../components/InputForm";
 
 function Post({ className }){
     const [receiverName, setReceiverName] = useState('');
@@ -81,7 +83,7 @@ function Post({ className }){
             }}
             >
             <PostPageLayout>
-                <InputFormLayout
+                <StyleInputForm
                     label='To.'
                     placeholder='받는 사람 이름을 입력해 주세요.'
                     value={receiverName}
@@ -107,17 +109,25 @@ const PostPageLayout = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 1024px;
+    height: 1080px;
     padding: 57px;
-`
-const InputFormLayout = styled(InputForm)`
-    max-width: 720px;
-    padding-top: 20px
+
+    @media screen and (max-width: 360px) {
+        width: 360px;
+        height: 836px; 
+     }
 `
 
 const SelectBackgroundLayout = styled(SelectBackground)`
-    max-width: 720px;
+    width: 720px;
     padding-top: 50px;
+
+    @media screen and (max-width: 480px) {
+         width: 310px;
+         height: 66px;
+         padding-top: 48px;
+     }
 `
 
 export default Post;

@@ -38,6 +38,13 @@ const ColorbackgroundList = styled(ColorbgList)`
     align-items: flex-start;
     gap: 16px;
     margin: 24px 0;
+
+    @media screen and (max-width: 480px) {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 12px;
+         height: 66px;
+     }
 `
 
 export default ColorbackgroundList;
