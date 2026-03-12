@@ -18,10 +18,16 @@ const ContentWrapper = styled.div`
   }
   & ol {
     padding-left: 1.5em;
-    list-style-type: decimal;
+    list-style-type: none;
   }
   & ul {
     padding-left: 1.5em;
+    list-style-type: none;
+  }
+  & li[data-list="ordered"] {
+    list-style-type: decimal;
+  }
+  & li[data-list="bullet"] {
     list-style-type: disc;
   }
   & li {

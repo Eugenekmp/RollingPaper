@@ -73,6 +73,27 @@ const StyledContentWrapper = styled(ContentWrapper)`
   .ql-editor {
     height: 200px;
   }
+  .ql-editor ol,
+  .ql-editor ul {
+    padding-left: 1.5em;
+    list-style-type: none;
+  }
+
+  .ql-editor li[data-list="bullet"] {
+    list-style-type: disc;
+  }
+
+  .ql-editor li[data-list="ordered"] {
+    list-style-type: decimal;
+  }
+  .ql-editor li > .ql-ui {
+    display: none;
+  }
+
+  .ql-editor li[data-list="bullet"],
+  .ql-editor li[data-list="ordered"] {
+    padding-left: 0.3em; /* 간격 줄이기 */
+  }
 `;
 
 export default TextEditor;
