@@ -50,7 +50,7 @@ function RollingPaperList({ title, sort }) {
   // 버튼 클릭 시 이동 로직
   const handleNext = () => {
     const nextIndex = currentIndex + VIEW_COUNT;
-    const PREFETCH_THRESHOLD = VIEW_COUNT * 2;
+    const PREFETCH_THRESHOLD = VIEW_COUNT * 3;
 
     if (
       nextIndex + PREFETCH_THRESHOLD > allLists.length &&
@@ -107,9 +107,9 @@ function RollingPaperList({ title, sort }) {
         </StyledLeftButton>
         <StyledCardList>
           {visibleLists.map((card) => (
-            <li key={card.id}>
+            <StyledCardItem key={card.id}>
               <RollingPaperCard card={card} />
-            </li>
+            </StyledCardItem>
           ))}
         </StyledCardList>
         <StyledRightButton onClick={handleNext} $isHidden={isNoNextData}>
@@ -124,15 +124,23 @@ function RollingPaperList({ title, sort }) {
 
 const StyledSection = styled.div`
   margin-top: 50px;
+  width: 1160px;
   flex-direction: column;
   gap: 16px;
   display: flex;
+
+  @media ${({ theme }) => theme.tablet} {
+    width: 100%;
+    padding: 0 24px;
+    overflow: visible;
+  }
 `;
 const StyledListHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const StyledSearchWrapper = styled.div`
@@ -163,14 +171,42 @@ const StyledSearchInput = styled.input`
 const StyledCardList = styled.ul`
   display: flex;
   gap: 20px;
-  flex-direction: row;
-  min-width: 1160px;
-  min-height: 260px;
+  width: 100%;
+  min-height: 280px;
+  list-style: none;
+
+  @media ${({ theme }) => theme.tablet} {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -24px;
+    padding: 0 24px;
+    width: auto;
+    scroll-padding-left: 24px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
+
+const StyledCardItem = styled.li`
+  list-style: none;
+  flex: 0 0 auto;
+
+  @media ${({ theme }) => theme.tablet} {
+    scroll-snap-align: start;
+  }
+`;
+
 const StyledCarouselWindow = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
+  width: 100%;
+
+  @media ${({ theme }) => theme.tablet} {
+    display: contents;
+  }
 `;
 
 const StyledListTitle = styled.h1`
@@ -182,7 +218,7 @@ const StyledLeftButton = styled.button`
   border: 1px solid rgba(0, 0, 0, 0.08);
   right: 100%;
   top: 50%;
-  transform: translate(50%, -50%);
+  transform: translate(50%, -70%);
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -191,13 +227,17 @@ const StyledLeftButton = styled.button`
   z-index: 2;
 
   visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
+
+  @media ${({ theme }) => theme.tablet} {
+    display: none;
+  }
 `;
 const StyledRightButton = styled.button`
   position: absolute;
   border: 1px solid rgba(0, 0, 0, 0.08);
   left: 100%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -70%);
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -206,6 +246,10 @@ const StyledRightButton = styled.button`
   z-index: 2;
 
   visibility: ${(props) => (props.$isHidden ? "hidden" : "visible")};
+
+  @media ${({ theme }) => theme.tablet} {
+    display: none;
+  }
 `;
 
 export default RollingPaperList;
