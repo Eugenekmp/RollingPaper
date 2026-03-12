@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 function ProfileImgOptions({ changeImg }) {
   const IMG_LIST = [
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Charlie",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Daisy",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Ethan",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Freya",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=George",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Hannah",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Ivan",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Zoe",
-    "https://api.dicebear.com/7.x/adventurer/svg?seed=Kevin",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka&backgroundColor=b6e3f4",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Charlie&backgroundColor=ffd5dc",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Daisy&backgroundColor=c0aede",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Ethan&backgroundColor=d1f4d9",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Freya&backgroundColor=ffdfbf",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=George&backgroundColor=ffd5dc",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Hannah&backgroundColor=b6e3f4",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Ivan&backgroundColor=c0aede",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Zoe&backgroundColor=d1f4d9",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=Kevin&backgroundColor=ffdfbf",
   ];
 
   const handleChange = (e) => {
@@ -20,19 +20,37 @@ function ProfileImgOptions({ changeImg }) {
   };
 
   return (
-    <div>
-      {IMG_LIST.map((url, index) => (
-        <Img
-          key={index}
-          src={url}
-          alt={`프로필${index + 1}`}
-          onClick={handleChange}
-          style={{ cursor: "pointer" }}
-        />
-      ))}
-    </div>
+    <StyledOptionsWrapper>
+      <StyledDescription>프로필 이미지를 선택해주세요!</StyledDescription>
+      <div>
+        {IMG_LIST.map((url, index) => (
+          <Img
+            key={index}
+            src={url}
+            alt={`프로필${index + 1}`}
+            onClick={handleChange}
+            style={{ cursor: "pointer" }}
+          />
+        ))}
+      </div>
+    </StyledOptionsWrapper>
   );
 }
+
+const StyledOptionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 94px;
+`;
+
+const StyledDescription = styled.p`
+  color: #555555;
+  font-weight: 400;
+  font-family: Pretendard;
+  font-size: 16px;
+  line-height: 26px;
+`;
 
 const Img = styled.img`
   width: 56px;

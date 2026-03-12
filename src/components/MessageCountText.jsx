@@ -1,19 +1,22 @@
 import styled from "styled-components";
 
-const TotalCountP = styled.p`
-  font-size: var(--font-18);
-  color: var(--gray-900);
-`;
-const TotalCount = styled.span`
-  font-weight: var(--bold);
-`;
-
-function MessageCountText({ card }) {
+function MessageCountText({ card, isImage }) {
   return (
-    <TotalCountP>
-      <TotalCount>{card.messageCount}</TotalCount>명이 작성했어요!
-    </TotalCountP>
+    <StyledCountText $isImage={isImage}>
+      <StyledCount>{card.messageCount}</StyledCount>명이 작성했어요!
+    </StyledCountText>
   );
 }
 
 export default MessageCountText;
+
+/* ==================== styled ==================== */
+
+const StyledCountText = styled.p`
+  font: var(--font-16-regular);
+  color: ${({ $isImage }) => ($isImage ? "var(--white)" : "var(--gray-700)")};
+`;
+
+const StyledCount = styled.span`
+  font: var(--font-16-bold);
+`;
