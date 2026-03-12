@@ -45,10 +45,8 @@ const StyledOptionsWrapper = styled.div`
 `;
 
 const StyledDescription = styled.p`
-  color: #555555;
-  font-weight: 400;
-  font-family: Pretendard;
-  font-size: 16px;
+  color: var(--gray-500);
+  font: var(--font-16-regular);
   line-height: 26px;
 `;
 

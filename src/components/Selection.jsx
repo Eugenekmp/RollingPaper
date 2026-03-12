@@ -68,15 +68,14 @@ const StyledSelectBox = styled.div`
   height: 50px;
   border-radius: 8px;
   border: ${({ $clicked }) =>
-    $clicked ? "2px solid #555555" : "1px solid #cccccc"};
+    $clicked ? "2px solid var(--gray-500)" : "1px solid var(--gray-300)"};
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
   line-height: 26px;
-  font-weight: 400;
-  color: #181818;
+  font: var(--font-16-regular);
+  color: var(--gray-900);
   cursor: pointer;
 `;
 
@@ -88,24 +87,23 @@ const StyledOptionList = styled.ul`
   position: absolute;
   top: 54px;
   width: 100%;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--gray-300);
   border-radius: 8px;
   background-color: white;
   list-style: none;
   padding: 10px 0;
   margin: 0;
   z-index: 10;
-  color: #181818;
+  color: var(--gray-900);
 `;
 const StyledOptionItem = styled.li`
   padding: 10px 16px;
-  font-size: 16px;
-  color: #181818;
+  font: var(--font-16-regular);
+  color: var(--gray-900)
   cursor: pointer;
 
   &:hover {
-    background-color: #f6f6f6;
-  }
+    background-color: var(--gray-100);
 `;
 
 export default Selection;

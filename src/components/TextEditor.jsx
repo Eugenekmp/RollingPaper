@@ -49,20 +49,20 @@ function TextEditor({ onChange, font }) {
 
 const StyledContentWrapper = styled(ContentWrapper)`
   width: 720px;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--gray-300);
   border-radius: 8px;
   overflow: hidden;
 
   .ql-toolbar {
     border: none;
-    border-bottom: 1px solid #cccccc;
-    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--gray-300);
+    background-color: var(--gray-100);
   }
 
   .ql-container {
     border: none;
     height: 200px;
-    font-size: 16px;
+    font: var(--font-16-regular);
   }
 
   .ql-editor {
