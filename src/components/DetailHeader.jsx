@@ -49,4 +49,13 @@ const StyledMessageCountWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 11px;
+
+  & > p {
+    font: var(--font-18-regular);
+    color: var(--gray-900);
+  }
+
+  & > span {
+    font: var(--font-18-bold);
+  }
 `;

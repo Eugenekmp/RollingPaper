@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import MessageCountText from "./MessageCountText";
 
-function MessageCount({ card }) {
+function MessageCount({ card, isImage }) {
   const maxCount = 3;
   const visibleCount = card.recentMessages.slice(0, maxCount);
   const remainingCount = card.messageCount - maxCount;
@@ -17,7 +17,7 @@ function MessageCount({ card }) {
         {remainingCount > 0 && <StyledAvatarListItem>+{remainingCount}</StyledAvatarListItem>}
       </StyledAvatarList>
 
-      <MessageCountText card={card} />
+      <MessageCountText card={card} isImage={isImage} />
     </>
   );
 }

@@ -16,6 +16,16 @@ function RollingPaperCard({ card }) {
     navigate(`/post/${card.id}`);
   };
 
+  const background = card.backgroundImageURL
+    ? {
+        type: "image",
+        value: card.backgroundImageURL,
+      }
+    : {
+        type: "color",
+        value: colorMatching[card.backgroundColor] || "#ee3131",
+      };
+
   return (
     <StyledCardWrapper
       onClick={handleCardClick}
@@ -23,8 +33,8 @@ function RollingPaperCard({ card }) {
     >
       <StyledCardContent>
         <StyledCardText>
-          <StyledNameTitle>{card.name}</StyledNameTitle>
-          <MessageCount card={card} />
+          <StyledNameTitle>To. {card.name}</StyledNameTitle>
+          <MessageCount card={card} isImage={background.type === "image"} />
         </StyledCardText>
         <StyledEmojiContent>
           <EmojiBadgeList emojiData={topThree} />
