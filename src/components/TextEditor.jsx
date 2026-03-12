@@ -4,6 +4,8 @@ import { useQuill } from "react-quilljs";
 import ContentWrapper from "./ContentWrapper";
 import StyledLabel from "./StyledLabel";
 import styled from "styled-components";
+import { fontMap } from "../constants/fontMap";
+
 const modules = {
   toolbar: [
     ["bold", "italic", "underline"],
@@ -11,13 +13,6 @@ const modules = {
     [{ list: "ordered" }, { list: "bullet" }],
     [{ background: [] }],
   ],
-};
-
-const fontMap = {
-  "Noto Sans": "Noto Sans KR",
-  Pretendard: "Pretendard",
-  나눔명조: "Nanum Myeongjo",
-  "나눔손글씨 손편지체": "Nanum Pen Script",
 };
 
 function TextEditor({ onChange, font }) {
