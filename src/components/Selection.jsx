@@ -28,19 +28,19 @@ function Selection({ children, type, value, onChange }) {
   return (
     <div>
       <StyledLabel>{children}</StyledLabel>
-      <SelectWrapper onBlur={() => setClicked(false)} tabIndex={0}>
-        <SelectBox
+      <StyledSelectWrapper onBlur={() => setClicked(false)} tabIndex={0}>
+        <StyledSelectBox
           $clicked={clicked}
           onClick={() => setClicked((prev) => !prev)}
         >
           <span>{value}</span>
           <ArrowIcon src={clicked ? SelectionUp : SelectionDown} />
-        </SelectBox>
+        </StyledSelectBox>
 
         {clicked && (
-          <OptionList>
+          <StyledOptionList>
             {options.map((option) => (
-              <OptionItem
+              <StyledOptionItem
                 key={option.value}
                 $selected={option.value === value}
                 onMouseDown={() => {
@@ -49,21 +49,21 @@ function Selection({ children, type, value, onChange }) {
                 }}
               >
                 {option.label}
-              </OptionItem>
+              </StyledOptionItem>
             ))}
-          </OptionList>
+          </StyledOptionList>
         )}
-      </SelectWrapper>
+      </StyledSelectWrapper>
     </div>
   );
 }
-const SelectWrapper = styled.div`
+const StyledSelectWrapper = styled.div`
   position: relative;
   width: 320px;
   outline: none;
 `;
 
-const SelectBox = styled.div`
+const StyledSelectBox = styled.div`
   width: 320px;
   height: 50px;
   border-radius: 8px;
@@ -84,7 +84,7 @@ const ArrowIcon = styled.img`
   pointer-events: none;
 `;
 
-const OptionList = styled.ul`
+const StyledOptionList = styled.ul`
   position: absolute;
   top: 54px;
   width: 100%;
@@ -97,7 +97,7 @@ const OptionList = styled.ul`
   z-index: 10;
   color: #181818;
 `;
-const OptionItem = styled.li`
+const StyledOptionItem = styled.li`
   padding: 10px 16px;
   font-size: 16px;
   color: #181818;
