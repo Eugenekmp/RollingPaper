@@ -34,11 +34,8 @@ function RollingPaperCard({ card }) {
     >
       <StyledCardContent>
         <StyledCardText>
-          <StyledNameTitle $isImage={background.type === "image"}>
-            {card.name}
-          </StyledNameTitle>
-
-          <MessageCount card={card} />
+          <StyledNameTitle $isImage={background.type === "image"}> To. {card.name}</StyledNameTitle>
+          <MessageCount card={card} isImage={background.type === "image"} />
         </StyledCardText>
         <StyledEmojiContent $isImage={background.type === "image"}>
           <EmojiBadgeList emojiData={topThree} />
