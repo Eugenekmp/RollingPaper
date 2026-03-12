@@ -80,7 +80,6 @@ const StyledCardWrapper = styled.div`
           background-position: center;
         `}
 
-  /* --- 배경이 color일 때만 도형 출력 --- */
   &::before {
     ${({ $background, $colorName }) =>
       $background.type === "color"

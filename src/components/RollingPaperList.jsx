@@ -147,10 +147,9 @@ const StyledListHeader = styled.div`
   width: 100%;
 
   @media ${({ theme }) => theme.mobile} {
-    /* 💡 모바일에서 세로로 배치하고, 순서를 반대로 뒤집습니다 */
     flex-direction: column-reverse;
-    align-items: flex-start; /* 왼쪽 정렬 */
-    gap: 24px; /* 검색창과 제목 사이 간격 */
+    align-items: flex-start;
+    gap: 24px;
   }
 `;
 
