@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "../styles/media";
 import MessageCount from "./MessageCount";
 import EmojiReaction from "./EmojiReaction";
 import ShareDropdown from "./ShareDropdown";
@@ -43,7 +42,7 @@ const StyledContainer = styled.div`
     padding: 13px 24px;
   }
 
-  @media ${device.tablet} {
+  @media ${({ theme }) => theme.device.tablet} {
     /* 여기에 태블릿용 스타일 추가 가능 */
   }
 `;

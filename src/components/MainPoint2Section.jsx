@@ -5,7 +5,7 @@ import CURSOR_ICON from '../assets/CursorIcon.svg';
 const MainPoint2Section = ({ isReverse = true }) => {
   return (
     <StyledSectionContainer $isReverse={isReverse}>
-      <StyledContentWrapper>
+      <StyledContentWrapper $isReverse={isReverse}>
         <StyledBadge>Point. 02</StyledBadge>
         <StyledTextContainer> 
           <StyledTitle>서로에게 이모지로 감정을 표현해보세요</StyledTitle>
@@ -14,97 +14,150 @@ const MainPoint2Section = ({ isReverse = true }) => {
       </StyledContentWrapper>
 
       <StyledImageArea>
-        <StyledMainCardsImage src={POINT2_CARDS_IMAGE} alt="이모지 기능 안내" />
-        <StyledCursorSecond src={CURSOR_ICON} alt="마우스 커서 2" />
+        <StyledImageWrapper>
+          <StyledMainCardsImage src={POINT2_CARDS_IMAGE} alt="이모지 기능 안내" />
+          <StyledCursorSecond src={CURSOR_ICON} alt="마우스 커서 2" />
+        </StyledImageWrapper>
       </StyledImageArea>
     </StyledSectionContainer>
   );
 };
 
+/* --- 스타일 --- */
+
 const StyledSectionContainer = styled.section`
   display: flex;
-  flex-direction: ${({ $isReverse }) => ($isReverse ? 'row-reverse' : 'row')};
-  align-items: center; 
-  justify-content: ${({ $isReverse }) => ($isReverse ? 'flex-end' : 'flex-start')}; 
-  width: 1200px;
-  height: 324px;
-  border-radius: 16px;
-  background-color: var(--surface);
-  overflow: hidden; 
-`;
-
-const StyledImageArea = styled.div`
-  position: relative; 
-  width: 720px;
-  height: 204px;
-  aspect-ratio: 720 / 204;
-  display: flex;
-  justify-content: center;
+  flex-direction: column; 
   align-items: center;
-  margin: 0; 
+  width: 100%;
+  background-color: var(--surface); 
+  border-radius: 16px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media ${({ theme }) => theme.device.desktop} {
+    flex-direction: ${({ $isReverse }) => ($isReverse ? 'row-reverse' : 'row')};
+    max-width: 1200px; 
+    height: 440px; 
+    justify-content: space-between;
+    padding: 60px;
+    margin-bottom: 48px;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    width: calc(100% - 48px);
+    margin: 0 24px 24px 24px;
+    padding: 40px;
+    height: auto;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: calc(100% - 48px);
+    margin: 0 24px 24px 24px;
+    padding: 24px;
+    height: auto;
+  }
 `;
 
 const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 295px; 
-  height: 156px;
-  gap: 16px;
+  width: 100%;
+  
+  @media (min-width: 1248px) {
+    width: 295px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    padding: 0 10%;
+    align-items: flex-start; 
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    padding: 0 24px;
+    gap: 8px;
+  }
 `;
 
-const StyledCursorSecond = styled.img`
-  position: absolute;
-  top: 8%;   
-  right: 27%;
-  width: 32px; 
-  height: 32px;
-  z-index: 10;
-  pointer-events: none;
+const StyledTitle = styled.h2`
+  color: var(--gray-900);
+  margin: 0;
+  
+  font: var(--font-24-bold);
+  font-size: clamp(18px, 5vw, 28px);
+
+  @media (min-width: 1248px) {
+    font-size: 24px;
+  }
 `;
 
-const StyledMainCardsImage = styled.img`
-  width: 100%; 
-  max-width: 720px;
-  height: auto;
-  object-fit: contain;
+const StyledDescription = styled.p`
+  color: var(--gray-500);
+  margin: 0;
+  
+  font: var(--font-18-regular);
+  font-size: clamp(15px, 5vw, 18px);
+
+  @media (min-width: 1248px) {
+    font-size: 18px;
+  }
 `;
 
-/* --- 텍스트 요소 --- */
 const StyledBadge = styled.span`
-  width: 80px;
-  height: 32px;
+  width: fit-content;
   padding: 6px 12px;
   border-radius: 50px;
   background-color: var(--purple-600);
   color: var(--white);
-  font: var(--font-14-bold); 
-  line-height: 20px;
-  letter-spacing: -0.05em;
+  font: var(--font-14-bold);
+`;
+
+const StyledImageArea = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+
+  @media (min-width: 1248px) {
+    width: 720px;
+    margin-top: 0;
+    justify-content: center;
+  }
+`;
+
+const StyledImageWrapper = styled.div`
+  position: relative;
+  width: 720px;
+  height: 204px;
+  flex-shrink: 0;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 355px;
+    height: 90px;
+  }
+`;
+
+const StyledMainCardsImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
+
+const StyledCursorSecond = styled.img`
+  position: absolute;
+  top: 8%;
+  right: 28%;
+  width: clamp(18px, 5vw, 32px);
+  height: auto;
 `;
 
 const StyledTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-`;
-
-const StyledTitle = styled.h2`
-  width: 100%;
-  height: 72px;
-  font: var(--font-24-bold);
-  color: var(--gray-900);
-  line-height: 36px;
-  margin: 0;
-`;
-
-const StyledDescription = styled.p`
-  width: 100%;
-  height: 28px;
-  font: var(--font-18-regular);
-  color: var(--gray-500);
-  line-height: 28px;
-  margin: 0;
+  margin-top: 16px;
 `;
 
 export default MainPoint2Section;
