@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Input from "./Input";
 
-function InputForm({ label, placeholder, value, onChange, onEnterPress, className}){
+function InputDiv({ label, placeholder, value, onChange, onEnterPress, className}){
     return(
-        <InputFormLayout className={className}>
+        <StyleInputLayout className={className}>
             <Label>{label}</Label>
             <Input
                 placeholder={placeholder}
@@ -11,10 +11,19 @@ function InputForm({ label, placeholder, value, onChange, onEnterPress, classNam
                 onChange={onChange}
                 onEnterPress={onEnterPress}
                 />
-        </InputFormLayout>
+        </StyleInputLayout>
     )   
 }
 
+const StyleInputForm = styled(InputDiv)`
+    width: 720px;
+    padding-top: 20px;
+
+    @media (max-width: 1200px) {
+        margin-bottom: 54px;
+    
+  }
+`
 const Label = styled.div`
     color: #181818;
     font-family: Pretendard;
@@ -25,7 +34,7 @@ const Label = styled.div`
     letter-spacing: -0.24px; 
 `
 
-const InputFormLayout = styled.div`
+const StyleInputLayout = styled.div`
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
@@ -33,4 +42,4 @@ const InputFormLayout = styled.div`
 
 `
 
-export default InputForm;
+export default StyleInputForm;

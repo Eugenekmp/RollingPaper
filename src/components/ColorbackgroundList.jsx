@@ -35,9 +35,19 @@ function ColorbgList({ className, onClickColor, userSelectedColor }){
 
 const ColorbackgroundList = styled(ColorbgList)`
     display: inline-flex;
-    align-items: flex-start;
     gap: 16px;
     margin: 24px 0;
+
+    @media (max-width:1200px) {
+        margin-top: 40px;
+    }
+
+    @media screen and (max-width: 480px) {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 12px;
+         height: 66px;
+     }
 `
 
 export default ColorbackgroundList;

@@ -41,7 +41,7 @@ function Input({ placeholder, value, onChange, onEnterPress }) {
 }
 
 const InputBox = styled.input`
-  width: 720px;
+  width: 100%;
   border-radius: 8px;
   border: 1px solid ${({ $isNull }) => ($isNull ? "#ff0000" : "#CCCCCC")};
   padding: 12px 16px;

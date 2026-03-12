@@ -25,8 +25,8 @@ function SelectBackground({ backgroundMode, setBackgroundMode, className }){
 
     return(
         <div className={className}>
-            <PlzSelectbg> 배경화면을 선택해 주세요.</PlzSelectbg>
-            <SubPlzSelectbg>컬러를 선택하거나, 이미지를 선택하실 수 있습니다.</SubPlzSelectbg>
+            <StylePlzSelectbg> 배경화면을 선택해 주세요.</StylePlzSelectbg>
+            <StyleSubPlzSelectbg>컬러를 선택하거나, 이미지를 선택하실 수 있습니다.</StyleSubPlzSelectbg>
             {/* <BackgroundSelector> */}
                 <BackgroundToggle
                     backgroundMode={backgroundMode}
@@ -40,7 +40,17 @@ function SelectBackground({ backgroundMode, setBackgroundMode, className }){
     )
 }
 
-const PlzSelectbg = styled.div`
+const StyleSelectBackground = styled(SelectBackground)`
+    width: 720px;
+    padding-top: 50px;
+
+    @media (max-width: 1200px) {
+        padding-top: 0;
+        
+    }
+`
+
+const StylePlzSelectbg = styled.div`
     color: var(--gray-900, #181818);
     font-family: Pretendard;
     font-size: 24px;
@@ -48,16 +58,18 @@ const PlzSelectbg = styled.div`
     font-weight: 700;
     line-height: 36px;
     letter-spacing: -0.24px;
+    
 `
 
-const SubPlzSelectbg = styled.span`
+const StyleSubPlzSelectbg = styled.span`
     color: var(--gray-500, #555);
     font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 26px; /* 162.5% */
+    line-height: 26px;
     letter-spacing: -0.16px;
 `
 
-export default SelectBackground;
+
+export default StyleSelectBackground;
