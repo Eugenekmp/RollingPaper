@@ -61,10 +61,13 @@ const StyledSelectWrapper = styled.div`
   position: relative;
   width: 320px;
   outline: none;
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const StyledSelectBox = styled.div`
-  width: 320px;
+  width: 100%;
   height: 50px;
   border-radius: 8px;
   border: ${({ $clicked }) =>
@@ -84,14 +87,13 @@ const ArrowIcon = styled.img`
 `;
 
 const StyledOptionList = styled.ul`
-  position: absolute;
   top: 54px;
   width: 100%;
   border: 1px solid var(--gray-300);
   border-radius: 8px;
   background-color: white;
   list-style: none;
-  padding: 10px 0;
+  padding: 0;
   margin: 0;
   z-index: 10;
   color: var(--gray-900);
@@ -104,6 +106,7 @@ const StyledOptionItem = styled.li`
 
   &:hover {
     background-color: var(--gray-100);
+  }
 `;
 
 export default Selection;

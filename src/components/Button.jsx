@@ -32,6 +32,9 @@ const Button = styled(CreateMessageButton)`
     color: #999999;
     cursor: not-allowed;
   }
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+  }
 `;
 
 export default Button;

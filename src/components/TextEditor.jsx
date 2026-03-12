@@ -89,6 +89,10 @@ const StyledContentWrapper = styled(ContentWrapper)`
   .ql-editor li[data-list="ordered"] {
     padding-left: 0.3em; /* 간격 줄이기 */
   }
+
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+  }
 `;
 
 export default TextEditor;
