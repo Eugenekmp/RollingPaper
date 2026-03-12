@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import MessageCount from "./MessageCount";
 import EmojiBadgeList from "./EmojiBadgeList";
 import { useEmojiReaction } from "../hooks/useEmojiReaction";
+import { colorMatching } from "../constants/colorMatching";
 
 function RollingPaperCard({ card }) {
   const navigate = useNavigate();
@@ -34,7 +35,10 @@ function RollingPaperCard({ card }) {
     >
       <StyledCardContent>
         <StyledCardText>
-          <StyledNameTitle $isImage={background.type === "image"}> To. {card.name}</StyledNameTitle>
+          <StyledNameTitle $isImage={background.type === "image"}>
+            {" "}
+            To. {card.name}
+          </StyledNameTitle>
           <MessageCount card={card} isImage={background.type === "image"} />
         </StyledCardText>
         <StyledEmojiContent $isImage={background.type === "image"}>
@@ -115,13 +119,6 @@ const StyledEmojiContent = styled.div`
   width: 100%;
   padding-top: 16px;
 `;
-
-const colorMatching = {
-  beige: "#FFE2AD",
-  purple: "#ECD9FF",
-  blue: "#B1E4FF",
-  green: "#D0F5C3",
-};
 
 const shapeStyles = {
   beige: css`
