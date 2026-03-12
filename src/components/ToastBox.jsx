@@ -31,12 +31,20 @@ const Toast = styled.div`
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 10000;
   width: 500px;
   padding: 19px 30px;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.80);
   color: #FFFFFF;
+  
+  @media ${({ theme }) => theme.tablet} {
+    bottom: 100px;
+  }
+
+  @media ${({ theme }) => theme.mobile} {
+    bottom: 100px;
+  }
 `
 
 const CloseIcon = styled.img`
