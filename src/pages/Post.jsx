@@ -123,9 +123,6 @@ const StyledPostPageWrapper = styled.div`
         width: 360px;
         height: 836px;
     }
-
 `
-
-
 
 export default Post;

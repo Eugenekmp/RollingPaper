@@ -47,6 +47,10 @@ const StyledSelectBackground = styled(SelectBackground)`
     @media ${({ theme }) => theme.tablet} {
         margin: 54px 0 24px 0;
     }
+    
+    // @media ${({ theme }) => theme.mobile} {
+    //     margin: 54px auto 24px auto;
+    // }
 `
 
 const StyledPlzSelectbg = styled.div`

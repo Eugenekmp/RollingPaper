@@ -39,10 +39,13 @@ const Toast = styled.div`
   color: #FFFFFF;
   
   @media ${({ theme }) => theme.tablet} {
+    width: 50%;
     bottom: 100px;
   }
 
   @media ${({ theme }) => theme.mobile} {
+    width: 92%;
+    margin: 0 5px;
     bottom: 100px;
   }
 `

@@ -38,6 +38,7 @@ const StyledColorbackgroundList = styled(ColorbgList)`
     gap: 16px;
     margin: 24px 0;
     width: 100%;
+    align-self: start
 
     @media ${({ theme }) => theme.tablet} {
         margin-top: 40px
@@ -46,9 +47,8 @@ const StyledColorbackgroundList = styled(ColorbgList)`
     @media ${({ theme }) => theme.mobile} {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
         gap: 12px;
-        width: 320px;
-        height: 320px;
     }
 `
 

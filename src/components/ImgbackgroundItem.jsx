@@ -21,8 +21,8 @@ const StyledItem = styled.div`
     cursor: pointer;
 
     @media ${({ theme }) => theme.moblie} {
-        width: 154px;
-        height: 154px;  
+        width: 100%;
+        aspect-ratio: 1 / 1;
     }
 `;
 
