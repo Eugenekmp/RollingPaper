@@ -5,7 +5,7 @@ import EmojiBadgeList from "./EmojiBadgeList";
 import { useEmojiReaction } from "../hooks/useEmojiReaction";
 import { colorMatching } from "../constants/colorMatching";
 
-function RollingPaperCard({ card }) {
+function RollingPaperCard({ card, $variant }) {
   const navigate = useNavigate();
 
   const { emojis } = useEmojiReaction(card.id);
@@ -32,6 +32,7 @@ function RollingPaperCard({ card }) {
       onClick={handleCardClick}
       $colorName={card.backgroundColor}
       $background={background}
+      $variant={$variant}
     >
       <StyledCardContent>
         <StyledCardText>
@@ -49,7 +50,7 @@ function RollingPaperCard({ card }) {
   );
 }
 
-const StyledCardWrapper = styled.div`
+export const StyledCardWrapper = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
@@ -57,7 +58,7 @@ const StyledCardWrapper = styled.div`
   align-items: flex-start;
   padding: 30px 24px 20px;
   cursor: pointer;
-  min-width: 275px;
+  width: 275px;
   height: 260px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
@@ -95,16 +96,26 @@ const StyledCardWrapper = styled.div`
   }
 
   @media ${({ theme }) => theme.tablet} {
-    width: 100%; /* 고정 px 대신 100% 사용 */
-    max-width: 275px; /* 최대 크기만 제한 */
-    height: 260px;
-    padding: 24px 20px;
+    ${({ $variant }) =>
+      $variant === "main" &&
+      css`
+        width: 275px;
+        height: 260px;
+      `}
   }
 
   @media ${({ theme }) => theme.mobile} {
-    height: 232px;
-    max-width: 208px;
-    padding: 20px 16px;
+    ${({ $variant }) =>
+      $variant === "main" &&
+      css`
+        height: 232px;
+        width: 208px;
+      `}
+    ${({ $variant }) =>
+      $variant === "search" &&
+      css`
+        width: 100%;
+      `}
   }
 `;
 

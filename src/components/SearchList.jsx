@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getRecipients } from "../api/index";
-import RollingPaperCard from "./RollingPaperCard";
+import RollingPaperCard, { StyledCardWrapper } from "./RollingPaperCard";
 import Pagination from "./Pagination";
 import SearchIc from "../assets/ic_search.svg";
 
@@ -114,7 +114,7 @@ function SearchList() {
           <StyledCardGrid>
             {currentItems.map((card) => (
               <StyledCard key={card.id}>
-                <RollingPaperCard card={card} />
+                <RollingPaperCard card={card} $variant="search" />
               </StyledCard>
             ))}
           </StyledCardGrid>
@@ -142,6 +142,7 @@ const StyledSearchContainer = styled.div`
   justify-content: center;
   margin-top: 16px;
   width: 100%;
+  padding: 0 24px;
 
   @media ${({ theme }) => theme.tablet} {
     padding: 0 24px;
@@ -149,7 +150,7 @@ const StyledSearchContainer = styled.div`
 
   /* 모바일: 좌우 여백 12px */
   @media ${({ theme }) => theme.mobile} {
-    padding: 0 12px;
+    padding: 0 20px;
   }
 `;
 
@@ -158,17 +159,18 @@ const StyledSearchHeader = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 1160px;
+  max-width: 1160px;
+  width: 100%;
   gap: 8px;
 
   @media ${({ theme }) => theme.tablet} {
-    max-width: 566px;
+    width: 566px;
     margin: 0 24px;
     position: sticky;
   }
   @media ${({ theme }) => theme.mobile} {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 275px;
+    width: 100%;
     gap: 8px;
     flex-direction: column-reverse;
     align-items: flex-start;
@@ -213,6 +215,7 @@ const StyledInputContainer = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
+  width: 100%;
 `;
 
 const StyledSearchInput = styled.input`

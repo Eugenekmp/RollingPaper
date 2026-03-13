@@ -142,7 +142,7 @@ function RollingPaperList({ title, sort }) {
         <StyledCardList>
           {renderedLists.map((card) => (
             <StyledCardItem key={card.id}>
-              <RollingPaperCard card={card} />
+              <RollingPaperCard card={card} $variant="main" />
             </StyledCardItem>
           ))}
           {isTablet && allLists.length < totalCount && (
