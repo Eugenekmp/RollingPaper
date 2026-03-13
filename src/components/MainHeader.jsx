@@ -5,10 +5,11 @@ import { useLocation, Link } from 'react-router-dom';
 const MainHeader = () => {
   const location = useLocation();
   const showCreateButton = location.pathname === '/' || location.pathname === '/list';
+  const isListPage = location.pathname === '/list';
 
   return (
     <StyledHeader>
-      <StyledHeaderContent>
+      <StyledHeaderContent $isListPage={isListPage}>
         <StyledLogo to="/">
           <StyledLogoIcon src={logo} alt="Rolling Logo"/>
         </StyledLogo>
@@ -40,10 +41,20 @@ const StyledHeaderContent = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 1199px; 
+  width: 1248px; 
   height: 62px;
   padding: 11px 24px; 
   margin: 0 auto;
+
+  @media ${({ theme }) => theme.tablet} {
+    padding: ${({ $isListPage }) =>
+    $isListPage ? "11px 60px 11px 24px" : "11px 24px"};
+  }
+
+  @media ${({ theme }) => theme.mobile} {
+    padding: ${({ $isListPage }) =>
+    $isListPage ? "11px 60px 11px 20px" : "11px 20px"};
+  }
 `;
 
 const StyledLogo = styled(Link)`
@@ -58,7 +69,7 @@ const StyledLogoIcon = styled.img`
 `;
 
 const StyledCreateButton = styled(Link)`
-d isplay: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 151px;
