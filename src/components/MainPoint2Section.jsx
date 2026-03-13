@@ -24,6 +24,7 @@ const MainPoint2Section = ({ isReverse = true }) => {
 };
 
 /* --- 스타일 --- */
+
 const StyledSectionContainer = styled.section`
   display: flex;
   flex-direction: column; 
