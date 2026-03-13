@@ -16,14 +16,22 @@ function Imgbackgrounds({ className, onClickImg, userSelectedImg}){
         </div>
     )
 }
-const ImgbackgroundList = styled(Imgbackgrounds)`
+const StyledImgBackgroundList = styled(Imgbackgrounds)`
     display: flex;
     gap: 16px;
     margin: 24px 0;
-    
-    @media (max-width:1200px) {
-        margin-top: 40px;
-    }
-`
+    width: 100%;
+    align-self: start
 
-export default ImgbackgroundList;
+    @media ${({ theme }) => theme.tablet} {
+        margin-top: 40px
+    }
+
+    @media ${({ theme }) => theme.mobile} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
+        gap: 12px;
+    }`
+
+export default StyledImgBackgroundList;

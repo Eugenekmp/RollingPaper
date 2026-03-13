@@ -14,6 +14,11 @@ const ColorbackgroundItem = styled.div`
         filter: blur(1px);
         cursor: pointer;
     }
+
+    @media ${({ theme }) => theme.moblie} {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
 `
 
 export default ColorbackgroundItem;
