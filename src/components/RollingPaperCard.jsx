@@ -50,8 +50,8 @@ function RollingPaperCard({ card }) {
 }
 
 const StyledCardWrapper = styled.div`
-  position: relative; /* 가상 요소의 기준점 */
-  overflow: hidden; /* 도형이 카드 밖으로 나가지 않게 함 */
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
