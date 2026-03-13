@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import MessageCount from "./MessageCount";
 import EmojiBadgeList from "./EmojiBadgeList";
 import { useEmojiReaction } from "../hooks/useEmojiReaction";
+import { colorMatching } from "../constants/colorMatching";
 
 function RollingPaperCard({ card }) {
   const navigate = useNavigate();
@@ -34,7 +35,10 @@ function RollingPaperCard({ card }) {
     >
       <StyledCardContent>
         <StyledCardText>
-          <StyledNameTitle $isImage={background.type === "image"}> To. {card.name}</StyledNameTitle>
+          <StyledNameTitle $isImage={background.type === "image"}>
+            {" "}
+            To. {card.name}
+          </StyledNameTitle>
           <MessageCount card={card} isImage={background.type === "image"} />
         </StyledCardText>
         <StyledEmojiContent $isImage={background.type === "image"}>
@@ -46,8 +50,8 @@ function RollingPaperCard({ card }) {
 }
 
 const StyledCardWrapper = styled.div`
-  position: relative; /* 가상 요소의 기준점 */
-  overflow: hidden; /* 도형이 카드 밖으로 나가지 않게 함 */
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -57,6 +61,7 @@ const StyledCardWrapper = styled.div`
   height: 260px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
+  background-clip: padding-box;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 
   background-color: ${({ $colorName }) =>
@@ -69,11 +74,12 @@ const StyledCardWrapper = styled.div`
         `
       : css`
           background-image:
-            linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
             url(${$background.value});
+          background-size: cover;
+          background-position: center;
         `}
 
-  /* --- 배경이 color일 때만 도형 출력 --- */
   &::before {
     ${({ $background, $colorName }) =>
       $background.type === "color"
@@ -87,17 +93,36 @@ const StyledCardWrapper = styled.div`
             display: none;
           `}
   }
+
+  @media ${({ theme }) => theme.tablet} {
+    max-width: 100%; /* 그리드 한 칸을 꽉 채우도록 제한 해제 */
+    height: 260px; /* 너비 변화에 맞춰 높이도 살짝 조정 */
+    padding: 24px 20px;
+  }
+
+  /* 모바일 환경 (그리드 2열 상황) */
+  @media ${({ theme }) => theme.mobile} {
+    max-width: 100%;
+    height: 232px;
+    width: 208px;
+    padding: 20px 16px;
+  }
 `;
 
 const StyledNameTitle = styled.h2`
   font: var(--font-24-bold);
   color: ${({ $isImage }) => ($isImage ? "white" : "black")};
+
+  @media ${({ theme }) => theme.mobile} {
+    font: var(--font-18-bold);
+  }
 `;
 
 const StyledCardText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-height: 112px;
 `;
 
 const StyledCardContent = styled.div`
@@ -106,6 +131,10 @@ const StyledCardContent = styled.div`
   gap: 43px;
   width: 100%;
   z-index: 1;
+
+  @media ${({ theme }) => theme.mobile} {
+    gap: 33px;
+  }
 `;
 
 const StyledEmojiContent = styled.div`
@@ -115,13 +144,6 @@ const StyledEmojiContent = styled.div`
   width: 100%;
   padding-top: 16px;
 `;
-
-const colorMatching = {
-  beige: "#FFE2AD",
-  purple: "#ECD9FF",
-  blue: "#B1E4FF",
-  green: "#D0F5C3",
-};
 
 const shapeStyles = {
   beige: css`
