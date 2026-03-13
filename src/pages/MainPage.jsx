@@ -35,6 +35,7 @@ const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 48px;
+  width: 100%;
 `;
 
 export default MainPage;

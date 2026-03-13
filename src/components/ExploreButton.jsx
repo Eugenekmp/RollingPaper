@@ -13,8 +13,9 @@ const StyledButtonLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   width: 280px;
+  min-width: 280px;
   height: 56px;
   padding: 14px 24px;
   margin: 24px auto; 
@@ -30,6 +31,19 @@ const StyledButtonLink = styled(Link)`
   
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+
+  @media ${({ theme }) => theme.tablet} {
+    min-width: unset;
+    width: calc(100% - 48px); 
+    margin: 24px auto; 
+    max-width: 720px;
+  }
+
+  @media ${({ theme }) => theme.mobile} {
+    min-width: unset;
+    width: calc(100% - 48px); 
+    margin: 24px auto; 
+    }
 
   &:hover {
     background-color: var(--purple-700);
