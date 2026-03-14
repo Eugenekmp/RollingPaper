@@ -20,6 +20,7 @@ function DetailPage() {
   const [cards, setCards] = useState(null);
   const { confirm, ConfirmComponent } = useConfirm();
 
+
   useEffect(() => {
     const backgroundData = async () => {
       try {
@@ -41,6 +42,7 @@ function DetailPage() {
         }
       } catch (error) {
         console.error(error);
+        navigate("/list", {replace: true});
       }
     };
 
