@@ -1,5 +1,4 @@
-import { use, useEffect, useState } from "react";
-import InputForm from "../components/InputForm";
+import { useEffect, useState } from "react";
 import SelectBackground from "../components/SelectBackgound";
 import SubmitButton from "../components/SubmitButton";
 import MyContext from "../components/MyContext";
@@ -7,7 +6,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ToastBox from "../components/ToastBox";
-import { device } from "../styles/media";
 import StyleInputForm from "../components/InputForm";
 import StyledSelectBackground from "../components/SelectBackgound";
 

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import MainHeader from "./components/MainHeader";
 import MainPage from "./pages/MainPage";
-import Post from "./pages/Post";
+import PostPage from "./pages/PostPage";
 import ListPage from "./pages/ListPage";
 import DetailPage from "./pages/DetailPage";
 import MessagePage from "./pages/MessagePage";
@@ -21,7 +21,7 @@ function App() {
           <BackButton />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/post" element={<Post />} />
+            <Route path="/post" element={<PostPage />} />
             <Route path="/post/:id" element={<DetailPage />} />
             <Route path="/post/:id/edit" element={<DetailPage />} />
             <Route path="/post/:id/message" element={<MessagePage />} />
