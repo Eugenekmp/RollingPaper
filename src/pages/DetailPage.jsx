@@ -47,7 +47,7 @@ function DetailPage() {
     };
 
     backgroundData();
-  }, [id]);
+  }, [id, navigate]);
 
   // 페이지 삭제
   const handleDeletePage = async () => {
