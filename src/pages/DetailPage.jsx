@@ -20,30 +20,30 @@ function DetailPage() {
   const [cards, setCards] = useState(null);
   const { confirm, ConfirmComponent } = useConfirm();
 
-  useEffect(() => {
-    const backgroundData = async () => {
-      try {
-        const data = await getDetailRecipients(id);
+  const recipientsData = async () => {
+    try {
+      const data = await getDetailRecipients(id);
 
-        setCards(data);
+      setCards(data);
 
-        if (data.backgroundImageURL) {
-          setBackground({
-            type: "image",
-            value: data.backgroundImageURL,
-          });
-        } else {
-          setBackground({
-            type: "color",
-            value: colorMatching[data.backgroundColor],
-          });
-        }
-      } catch (error) {
-        console.error(error);
+      if (data.backgroundImageURL) {
+        setBackground({
+          type: "image",
+          value: data.backgroundImageURL,
+        });
+      } else {
+        setBackground({
+          type: "color",
+          value: colorMatching[data.backgroundColor],
+        });
       }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    backgroundData();
+  useEffect(() => {
+    recipientsData();
   }, [id]);
 
   // 페이지 삭제
@@ -90,7 +90,7 @@ function DetailPage() {
             </DetailButton>
           </StyledButtonGroup>
 
-          <DetailCardList editMode={editMode} />
+          <DetailCardList editMode={editMode} refreshRecipient={recipientsData}/>
         </StyledContainer>
       </StyledBackground>
 

@@ -10,7 +10,7 @@ import { getDetailMessages, deleteMessages } from "../api/index";
 
 const LIMIT = 8; // 데이터를 8개씩 받아오기 위한 상수
 
-function DetailCardList({ editMode }) {
+function DetailCardList({ editMode, refreshRecipient }) {
   const { id } = useParams();
   const [cards, setCards] = useState([]);
   const [cardModal, setCardModal] = useState(null);
@@ -63,6 +63,7 @@ function DetailCardList({ editMode }) {
     try {
       await deleteMessages(id);
       setCards((prevCards) => prevCards.filter((card) => card.id !== id));
+      refreshRecipient();
     } catch (error) {
       console.error(error);
     }
