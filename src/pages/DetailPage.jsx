@@ -10,33 +10,32 @@ import { getDetailRecipients, deleteRecipients } from "../api/index";
 
 function DetailPage() {
   const { id } = useParams();
-  const [background, setBackground] = useState({
-    type: "color",
-    value: "#FFFFFF",
-  });
   const navigate = useNavigate();
   const location = useLocation();
   const editMode = location.pathname.includes("/edit");
   const [cards, setCards] = useState(null);
   const { confirm, ConfirmComponent } = useConfirm();
 
+  const background = cards
+    ? cards.backgroundImageURL
+      ? {
+          type: "image",
+          value: cards.backgroundImageURL,
+        }
+      : {
+          type: "color",
+          value: colorMatching[cards.backgroundColor],
+        }
+    : {
+        type: "color",
+        value: "#FFFFFF",
+      };
+
   const recipientsData = async () => {
     try {
       const data = await getDetailRecipients(id);
 
       setCards(data);
-
-      if (data.backgroundImageURL) {
-        setBackground({
-          type: "image",
-          value: data.backgroundImageURL,
-        });
-      } else {
-        setBackground({
-          type: "color",
-          value: colorMatching[data.backgroundColor],
-        });
-      }
     } catch (error) {
       console.error(error);
     }
@@ -90,7 +89,10 @@ function DetailPage() {
             </DetailButton>
           </StyledButtonGroup>
 
-          <DetailCardList editMode={editMode} refreshRecipient={recipientsData}/>
+          <DetailCardList
+            editMode={editMode}
+            refreshRecipient={recipientsData}
+          />
         </StyledContainer>
       </StyledBackground>
 
@@ -127,7 +129,7 @@ const StyledContainer = styled.div`
   padding: 60px 24px 110px;
 
   @media ${({ theme }) => theme.tablet} {
-    padding: 50px 24px 122px
+    padding: 50px 24px 122px;
   }
 
   @media ${({ theme }) => theme.mobile} {
