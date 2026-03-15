@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import SelectBackground from "../components/SelectBackgound";
 import SubmitButton from "../components/SubmitButton";
 import MyContext from "../components/MyContext";
 import axios from "axios";
@@ -8,6 +7,7 @@ import styled from "styled-components";
 import ToastBox from "../components/ToastBox";
 import StyleInputForm from "../components/InputForm";
 import StyledSelectBackground from "../components/SelectBackgound";
+import instance from '../api/axios'
 
 function Post({ className }){
     const [receiverName, setReceiverName] = useState('');
@@ -40,8 +40,8 @@ function Post({ className }){
 
         //배경 .... backgroundMode가 img이면 이미지 URL 전달
         try {
-            const response = await axios.post(
-                `https://rolling-api.vercel.app/23-5/recipients/`,
+            const response = await instance.post(
+                `/recipients/`,
                 postData
             );
 

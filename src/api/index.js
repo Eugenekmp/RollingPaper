@@ -16,3 +16,5 @@ export const getRecipients = async ({ limit = 4, offset = 0, sort = "" }) => {
   });
   return response.data;
 };
+
+export default instance;
