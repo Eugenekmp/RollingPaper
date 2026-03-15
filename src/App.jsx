@@ -10,6 +10,8 @@ import BackButton from "./components/BackButton";
 import GlobalStyle from "./styles/GlobalStyle";
 import SearchPage from "./pages/SearchPage";
 import { device } from "./styles/media";
+import StyledNotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
             <Route path="/post/:id/message" element={<MessagePage />} />
             <Route path="/list" element={<ListPage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
       </ThemeProvider>
