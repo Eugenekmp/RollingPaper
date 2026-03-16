@@ -13,6 +13,7 @@ const StyledButtonLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 12px 24px 60px;
 
   width: 280px; 
   height: 56px;
@@ -30,12 +31,17 @@ const StyledButtonLink = styled(Link)`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.tablet} { 
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%; 
     max-width: 720px; 
   }
 
   @media ${({ theme }) => theme.mobile} {
+    bottom: 24px;
     width: 100%;
     max-width: 320px; 
   }
