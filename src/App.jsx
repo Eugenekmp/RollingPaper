@@ -8,7 +8,7 @@ import DetailPage from "./pages/detail/DetailPage";
 import MessagePage from "./pages/MessagePage";
 import BackButton from "./components/BackButton";
 import GlobalStyle from "./styles/GlobalStyle";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./pages/Search/SearchPage";
 import { device } from "./styles/media";
 
 function App() {
