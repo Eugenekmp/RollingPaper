@@ -1,8 +1,8 @@
 import { useState } from "react";
 import StyledLabel from "./StyledLabel";
 import styled from "styled-components";
-import SelectionUp from "../assets/SelectionUp.svg";
-import SelectionDown from "../assets/SelectionDown.svg";
+import SelectionUp from "../../assets/SelectionUp.svg";
+import SelectionDown from "../../assets/SelectionDown.svg";
 
 function Selection({ children, type, value, onChange }) {
   const [clicked, setClicked] = useState(false);

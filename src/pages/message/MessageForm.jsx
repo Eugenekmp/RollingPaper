@@ -1,14 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import instance from "../api/index";
+import instance from "../../api/index";
 import styled from "styled-components";
-import Button from "./Button";
+import Button from "../../components/Button";
 import Selection from "./Selection";
 import TextEditor from "./TextEditor";
-import InputForm from "./InputForm";
+import InputForm from "../../components/InputForm";
 import ProfileImgContainer from "./ProfileImgContainer";
-import MyContext from "../components/MyContext";
-import ToastBox from "../components/ToastBox";
+import MyContext from "../../components/MyContext";
+import ToastBox from "../../components/ToastBox";
 
 function MessageForm() {
   //현재 페이지의 id 값 저장

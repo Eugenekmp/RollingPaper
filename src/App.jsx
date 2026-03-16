@@ -5,7 +5,7 @@ import MainPage from "./pages/MainPage";
 import Post from "./pages/Post";
 import ListPage from "./pages/ListPage";
 import DetailPage from "./pages/DetailPage";
-import MessagePage from "./pages/MessagePage";
+import MessagePage from "./pages/message/MessagePage";
 import BackButton from "./components/BackButton";
 import GlobalStyle from "./styles/GlobalStyle";
 import SearchPage from "./pages/SearchPage";
