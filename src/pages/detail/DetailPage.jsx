@@ -1,50 +1,48 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import DetailCardList from "../components/DetailCardList";
-import DetailButton from "../components/DetailButton";
-import DetailHeader from "../components/DetailHeader";
-import useConfirm from "../hooks/useConfirm";
-import { colorMatching } from "../constants/colorMatching";
-import axios from "../api/axios";
+import DetailCardList from "./DetailCardList";
+import DetailButton from "./DetailButton";
+import DetailHeader from "./DetailHeader";
+import useConfirm from "../../hooks/useConfirm";
+import { colorMatching } from "../../constants/colorMatching";
+import { getDetailRecipients, deleteRecipients } from "../../api/index";
 
 function DetailPage() {
   const { id } = useParams();
-  const [background, setBackground] = useState({
-    type: "color",
-    value: "#FFFFFF",
-  });
   const navigate = useNavigate();
   const location = useLocation();
   const editMode = location.pathname.includes("/edit");
   const [cards, setCards] = useState(null);
   const { confirm, ConfirmComponent } = useConfirm();
 
-  useEffect(() => {
-    const backgroundData = async () => {
-      try {
-        const response = await axios.get(`recipients/${id}/`);
-        const data = response.data;
-
-        setCards(data);
-
-        if (data.backgroundImageURL) {
-          setBackground({
-            type: "image",
-            value: data.backgroundImageURL,
-          });
-        } else {
-          setBackground({
-            type: "color",
-            value: colorMatching[data.backgroundColor],
-          });
+  const background = cards
+    ? cards.backgroundImageURL
+      ? {
+          type: "image",
+          value: cards.backgroundImageURL,
         }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+      : {
+          type: "color",
+          value: colorMatching[cards.backgroundColor],
+        }
+    : {
+        type: "color",
+        value: "#FFFFFF",
+      };
 
-    backgroundData();
+  const recipientsData = async () => {
+    try {
+      const data = await getDetailRecipients(id);
+
+      setCards(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    recipientsData();
   }, [id]);
 
   // 페이지 삭제
@@ -54,7 +52,7 @@ function DetailPage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`recipients/${id}/`);
+      await deleteRecipients(id);
       navigate("/list");
     } catch (error) {
       console.error(error);
@@ -91,7 +89,10 @@ function DetailPage() {
             </DetailButton>
           </StyledButtonGroup>
 
-          <DetailCardList editMode={editMode} />
+          <DetailCardList
+            editMode={editMode}
+            refreshRecipient={recipientsData}
+          />
         </StyledContainer>
       </StyledBackground>
 
@@ -128,7 +129,7 @@ const StyledContainer = styled.div`
   padding: 60px 24px 110px;
 
   @media ${({ theme }) => theme.tablet} {
-    padding: 50px 24px 122px
+    padding: 50px 24px 122px;
   }
 
   @media ${({ theme }) => theme.mobile} {
