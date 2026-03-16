@@ -3,12 +3,12 @@ import { ThemeProvider } from "styled-components";
 import MainHeader from "./components/MainHeader";
 import MainPage from "./pages/MainPage";
 import Post from "./pages/Post";
-import ListPage from "./pages/ListPage";
+import ListPage from "./pages/List/ListPage";
 import DetailPage from "./pages/DetailPage";
 import MessagePage from "./pages/MessagePage";
 import BackButton from "./components/BackButton";
 import GlobalStyle from "./styles/GlobalStyle";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./pages/Search/SearchPage";
 import { device } from "./styles/media";
 
 function App() {
