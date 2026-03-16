@@ -87,6 +87,7 @@ const ArrowIcon = styled.img`
 `;
 
 const StyledOptionList = styled.ul`
+  position: absolute;
   top: 54px;
   width: 100%;
   border: 1px solid var(--gray-300);
