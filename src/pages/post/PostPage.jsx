@@ -1,15 +1,13 @@
-import { use, useEffect, useState } from "react";
-import InputForm from "../components/InputForm";
-import SelectBackground from "../components/SelectBackgound";
-import SubmitButton from "../components/SubmitButton";
-import MyContext from "../components/MyContext";
+import { useEffect, useState } from "react";
+import SubmitButton from "../../components/SubmitButton";
+import MyContext from "../../components/MyContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ToastBox from "../components/ToastBox";
-import { device } from "../styles/media";
-import StyleInputForm from "../components/InputForm";
-import StyledSelectBackground from "../components/SelectBackgound";
+import ToastBox from "../../components/ToastBox";
+import StyleInputForm from "../../components/InputForm";
+import StyledSelectBackground from "./SelectBackgound";
+import instance from '../../api/axios';
 
 function Post({ className }){
     const [receiverName, setReceiverName] = useState('');
@@ -42,8 +40,8 @@ function Post({ className }){
 
         //배경 .... backgroundMode가 img이면 이미지 URL 전달
         try {
-            const response = await axios.post(
-                `https://rolling-api.vercel.app/23-5/recipients/`,
+            const response = await instance.post(
+                `/recipients/`,
                 postData
             );
 

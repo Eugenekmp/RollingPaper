@@ -2,7 +2,7 @@ import { useContext } from "react";
 import BackgroundCheck from "./BackgroundCheck";
 import ImgBackgroundItem from "./ImgbackgroundItem";
 import styled from "styled-components";
-import MyContext from "./MyContext";
+import MyContext from "../../components/MyContext";
 
 function Imgbackgrounds({ className, onClickImg, userSelectedImg}){
     const { bgImgList } = useContext(MyContext);

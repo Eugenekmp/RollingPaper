@@ -38,6 +38,7 @@ function DetailPage() {
       setCards(data);
     } catch (error) {
       console.error(error);
+      navigate("*");
     }
   };
 
