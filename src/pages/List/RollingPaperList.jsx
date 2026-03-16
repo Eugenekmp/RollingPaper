@@ -11,6 +11,8 @@ function RollingPaperList({ title, sort }) {
   const [allLists, setAllLists] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
   const VIEW_COUNT = 4;
   const FETCH_LIMIT = 100;
 
@@ -29,6 +31,8 @@ function RollingPaperList({ title, sort }) {
   const loadMoreLists = useCallback(
     async (offset, isReset = false) => {
       try {
+        if (offset === 0) setIsLoading(true);
+
         const data = await getRecipients({
           limit: FETCH_LIMIT,
           offset: offset,
@@ -44,6 +48,8 @@ function RollingPaperList({ title, sort }) {
         setTotalCount(data.count);
       } catch (error) {
         console.error("데이터 로딩 중 오류 발생:", error);
+      } finally {
+        setIsLoading(false);
       }
     },
     [sort],
@@ -140,11 +146,21 @@ function RollingPaperList({ title, sort }) {
         </StyledLeftButton>
 
         <StyledCardList>
-          {renderedLists.map((card) => (
-            <StyledCardItem key={card.id}>
-              <RollingPaperCard card={card} $variant="main" />
-            </StyledCardItem>
-          ))}
+          {isLoading
+            ? // 로딩 중일 때: 4개의 빈 스켈레톤 카드를 보여줌
+              Array(4)
+                .fill(0)
+                .map((_, i) => (
+                  <StyledCardItem key={i}>
+                    <RollingPaperCard isLoading={true} $variant="main" />
+                  </StyledCardItem>
+                ))
+            : // 로딩 완료: 실제 받아온 데이터 출력
+              renderedLists.map((card) => (
+                <StyledCardItem key={card.id}>
+                  <RollingPaperCard card={card} $variant="main" />
+                </StyledCardItem>
+              ))}
           {isTablet && allLists.length < totalCount && (
             <StyledObserverTarget ref={observerRef} />
           )}

@@ -4,11 +4,16 @@ import MessageCount from "../../components/MessageCount";
 import EmojiBadgeList from "../../components/EmojiBadgeList";
 import { useEmojiReaction } from "../../hooks/useEmojiReaction";
 import { colorMatching } from "../../constants/colorMatching";
+import RollingPaperCardSkeleton from "./RollingPaperCardSkeleton";
 
-function RollingPaperCard({ card, $variant }) {
+function RollingPaperCard({ card, $variant, isLoading }) {
   const navigate = useNavigate();
+  const { emojis } = useEmojiReaction(card?.id);
 
-  const { emojis } = useEmojiReaction(card.id);
+  if (isLoading || !card) {
+    return <RollingPaperCardSkeleton $variant={$variant} />;
+  }
+
   const sortedEmojis = [...emojis].sort((a, b) => b.count - a.count);
 
   const topThree = sortedEmojis.slice(0, 3);
@@ -119,7 +124,7 @@ export const StyledCardWrapper = styled.div`
   }
 `;
 
-const StyledNameTitle = styled.h2`
+export const StyledNameTitle = styled.h2`
   font: var(--font-24-bold);
   color: ${({ $isImage }) => ($isImage ? "white" : "black")};
 
@@ -128,14 +133,14 @@ const StyledNameTitle = styled.h2`
   }
 `;
 
-const StyledCardText = styled.div`
+export const StyledCardText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-height: 112px;
 `;
 
-const StyledCardContent = styled.div`
+export const StyledCardContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 43px;
@@ -156,7 +161,7 @@ const StyledCardContent = styled.div`
   }
 `;
 
-const StyledEmojiContent = styled.div`
+export const StyledEmojiContent = styled.div`
   border-top: 1px solid
     ${({ $isImage }) =>
       $isImage ? "rgba(255,255,255,0.5)" : "rgba(0, 0, 0, 0.12)"};
