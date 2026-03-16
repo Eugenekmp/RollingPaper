@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import instance from "../api/index";
 import styled from "styled-components";
 import Button from "./Button";
 import Selection from "./Selection";
@@ -42,10 +42,13 @@ function MessageForm() {
     if (isDisabled) return;
 
     try {
-      await axios.post(
-        `https://rolling-api.vercel.app/23-5/recipients/${id}/messages/`,
-        { sender, profileImageURL, relationship, content, font },
-      );
+      await instance.post(`/recipients/${id}/messages/`, {
+        sender,
+        profileImageURL,
+        relationship,
+        content,
+        font,
+      });
       navigate(`/post/${id}`); //요청 후 해당 id 페이지로 이동
     } catch {
       makeToast("메세지 작성에 실패하였습니다");

@@ -45,3 +45,5 @@ export const deleteMessages = async (id) => {
   const response = await instance.delete(`messages/${id}/`);
   return response.data;
 };
+
+export default instance;
