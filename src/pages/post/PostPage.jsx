@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import SubmitButton from "../components/SubmitButton";
-import MyContext from "../components/MyContext";
+import SubmitButton from "../../components/SubmitButton";
+import MyContext from "../../components/MyContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ToastBox from "../components/ToastBox";
-import StyleInputForm from "../components/InputForm";
-import StyledSelectBackground from "../components/SelectBackgound";
-import instance from '../api/axios'
+import ToastBox from "../../components/ToastBox";
+import StyleInputForm from "../../components/InputForm";
+import StyledSelectBackground from "./SelectBackgound";
+import instance from '../../api/axios';
 
 function Post({ className }){
     const [receiverName, setReceiverName] = useState('');

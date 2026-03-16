@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import MainHeader from "./components/MainHeader";
 import MainPage from "./pages/MainPage";
-import PostPage from "./pages/PostPage";
 import ListPage from "./pages/ListPage";
 import DetailPage from "./pages/DetailPage";
 import MessagePage from "./pages/MessagePage";
@@ -10,8 +9,8 @@ import BackButton from "./components/BackButton";
 import GlobalStyle from "./styles/GlobalStyle";
 import SearchPage from "./pages/SearchPage";
 import { device } from "./styles/media";
-import StyledNotFoundPage from "./pages/NotFoundPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PostPage from "./pages/post/PostPage";
 
 function App() {
   return (

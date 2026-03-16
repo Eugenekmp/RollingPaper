@@ -2,7 +2,7 @@ import { useContext } from "react";
 import BackgroundToggle from "./BackgroundToggle";
 import StyledColorbackgroundList from "./ColorbackgroundList";
 import StyledImgBackgroundList from "./ImgbackgroundList";
-import MyContext from "./MyContext";
+import MyContext from "../../components/MyContext";
 import styled from "styled-components";
 
 function SelectBackground({ backgroundMode, setBackgroundMode, className }){
