@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
-import MessageCount from "./MessageCount";
-import EmojiBadgeList from "./EmojiBadgeList";
-import { useEmojiReaction } from "../hooks/useEmojiReaction";
-import { colorMatching } from "../constants/colorMatching";
+import MessageCount from "../../components/MessageCount";
+import EmojiBadgeList from "../../components/EmojiBadgeList";
+import { useEmojiReaction } from "../../hooks/useEmojiReaction";
+import { colorMatching } from "../../constants/colorMatching";
 
 function RollingPaperCard({ card, $variant }) {
   const navigate = useNavigate();
