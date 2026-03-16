@@ -47,8 +47,12 @@ export const deleteMessages = async (id) => {
 };
 
 //특정 수신자의 이모지 리액션 목록을 조회합니다.
-export const getReactions = async (recipientId) => {
-  const response = await instance.get(`recipients/${recipientId}/reactions/`);
+export const getReactions = async (recipientId, limit = 8) => {
+  const response = await instance.get(`recipients/${recipientId}/reactions/`, {
+    params: {
+      limit, 
+    },
+  });
   return response.data?.results || [];
 };
 
