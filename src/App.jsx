@@ -4,7 +4,7 @@ import MainHeader from "./components/MainHeader";
 import MainPage from "./pages/MainPage";
 import Post from "./pages/Post";
 import ListPage from "./pages/ListPage";
-import DetailPage from "./pages/DetailPage";
+import DetailPage from "./pages/detail/DetailPage";
 import MessagePage from "./pages/MessagePage";
 import BackButton from "./components/BackButton";
 import GlobalStyle from "./styles/GlobalStyle";
