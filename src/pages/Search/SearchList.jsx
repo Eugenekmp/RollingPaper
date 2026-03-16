@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { getRecipients } from "../../api/index";
-import RollingPaperCard from "../List/RollingPaperCard";
+import RollingPaperCard from "../list/RollingPaperCard";
 import Pagination from "./Pagination";
 import SearchIc from "../../assets/ic_search.svg";
 import LoadingImg from "../../assets/loading.png";
