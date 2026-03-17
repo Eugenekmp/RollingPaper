@@ -16,7 +16,7 @@ const EmojiReaction = ({ recipientId }) => {
 
   const sortedEmojis = [...emojis].sort((a, b) => b.count - a.count);
   const topThree = sortedEmojis.slice(0, 3);
-  const topEight = sortedEmojis.slice(0, 8);
+  const allEmojis = sortedEmojis;
 
   const handleEmojiSelect = (emojiObject) => {
     handleAddEmoji(emojiObject.emoji);
@@ -51,8 +51,8 @@ const EmojiReaction = ({ recipientId }) => {
           </StyledMoreButton>
 
           {isDropdownVisible && (
-            <StyledDropdownList $count={topEight.length}>
-              {topEight.map((emoji) => (
+            <StyledDropdownList $count={allEmojis.length}>
+              {allEmojis.map((emoji) => (
                 <StyledDropdownEmoji key={emoji.id}>
                   <span className="emoji-icon">{emoji.emoji}</span>
                   <span className="emoji-count">{emoji.count}</span>
@@ -86,8 +86,6 @@ const EmojiReaction = ({ recipientId }) => {
     </StyledContainer>
   );
 };
-
-/* ==================== Styled Components ==================== */
 
 const StyledContainer = styled.div`
   display: flex;
@@ -126,9 +124,14 @@ const StyledDropdownList = styled.div`
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 
   display: grid;
-  grid-template-columns: ${({ $count }) => 
-    $count <= 4 ? `repeat(${$count}, auto)` : `repeat(4, auto)`};
+  grid-template-columns: repeat(4, 1fr); 
   gap: 10px 8px;
+
+  max-height: 140px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: auto;
+  min-width: max-content;
 
   @media ${({ theme }) => theme.mobile} {
     left: 50%;
