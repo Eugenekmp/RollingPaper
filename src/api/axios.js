@@ -4,10 +4,11 @@ const instance = axios.create({
   baseURL: "https://rolling-api.vercel.app",
   timeout: 5000,
 });
+
 //메세지 작성
 export const postMessage = async (id, messageData) => {
   const response = await instance.post(
-    `/recipients/${id}/messages/`,
+    `/23-5/recipients/${id}/messages/`,
     messageData,
   );
   return response.data;
