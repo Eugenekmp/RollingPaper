@@ -16,6 +16,7 @@ function ListPage() {
       <RollingPaperList title="최근에 만든 롤링 페이퍼 ⭐️️" />
       <StyledMargin />
       <ExploreButton to="/post">나도 만들어보기</ExploreButton>
+      <StyledBottomMargin />
     </StyledMainContainer>
   );
 }
@@ -25,6 +26,12 @@ const StyledMargin = styled.div`
 
   @media ${({ theme }) => theme.mobile} {
     height: 8px;
+  }
+`;
+
+const StyledBottomMargin = styled.div`
+  @media ${({ theme }) => theme.tablet} {
+    height: 40px;
   }
 `;
 export default ListPage;

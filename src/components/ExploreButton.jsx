@@ -9,7 +9,7 @@ const StyledButtonLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 12px 0px 36px;
+  margin: 12px 0px 24px;
   z-index: 9999;
 
   width: 280px;
