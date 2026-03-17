@@ -6,7 +6,7 @@ export const useEmojiReaction = (recipientId) => {
   const [emojis, setEmojis] = useState([]);
 
   const handleFetchEmoji = async () => {
-    const data = await getReactions(recipientId);
+    const data = await getReactions(recipientId, 100);
     setEmojis(data);
   };
 

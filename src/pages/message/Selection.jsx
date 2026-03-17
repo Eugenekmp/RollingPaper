@@ -18,12 +18,18 @@ function Selection({ children, type, value, onChange }) {
     ];
   } else if (type === "font") {
     options = [
-      { label: "Noto Sans KR", value: "Noto Sans" },
-      { label: "Pretendard", value: "Pretendard" },
-      { label: "나눔명조", value: "나눔명조" },
-      { label: "나눔손글씨 손편지체", value: "나눔손글씨 손편지체" },
+      { label: "Noto Sans KR", value: "Noto Sans", fontFamily: "Noto Sans KR" },
+      { label: "Pretendard", value: "Pretendard", fontFamily: "Pretendard" },
+      { label: "나눔명조", value: "나눔명조", fontFamily: "Nanum Myeongjo" },
+      {
+        label: "나눔손글씨 손편지체",
+        value: "나눔손글씨 손편지체",
+        fontFamily: "Nanum Pen Script",
+      },
     ];
   }
+
+  const selectedFont = options.find((opt) => opt.value === value)?.fontFamily;
 
   return (
     <div>
@@ -32,6 +38,7 @@ function Selection({ children, type, value, onChange }) {
         <StyledSelectBox
           $clicked={clicked}
           onClick={() => setClicked((prev) => !prev)}
+          $fontFamily={selectedFont}
         >
           <span>{value}</span>
           <ArrowIcon src={clicked ? SelectionUp : SelectionDown} />
@@ -43,6 +50,7 @@ function Selection({ children, type, value, onChange }) {
               <StyledOptionItem
                 key={option.value}
                 $selected={option.value === value}
+                $fontValue={type === "font" ? option.fontFamily : undefined}
                 onMouseDown={() => {
                   onChange(option.value);
                   setClicked(false);
@@ -78,6 +86,7 @@ const StyledSelectBox = styled.div`
   align-items: center;
   line-height: 26px;
   font: var(--font-16-regular);
+  font-family: ${({ $fontFamily }) => $fontFamily || "inherit"};
   color: var(--gray-900);
   cursor: pointer;
 `;
@@ -101,10 +110,12 @@ const StyledOptionList = styled.ul`
 `;
 const StyledOptionItem = styled.li`
   padding: 10px 16px;
-  font: var(--font-16-regular);
-  color: var(--gray-900)
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: var(--gray-900);
   cursor: pointer;
-
+  font-family: ${({ $fontValue }) => $fontValue || "inherit"};
   &:hover {
     background-color: var(--gray-100);
   }

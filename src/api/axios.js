@@ -4,6 +4,14 @@ const instance = axios.create({
   baseURL: "https://rolling-api.vercel.app",
   timeout: 5000,
 });
+//메세지 작성
+export const postMessage = async (id, messageData) => {
+  const response = await instance.post(
+    `/recipients/${id}/messages/`,
+    messageData,
+  );
+  return response.data;
+};
 
 //롤링페이퍼 List 불러오기
 export const getRecipients = async ({ limit = 4, offset = 0, sort = "" }) => {
@@ -30,7 +38,7 @@ export const deleteRecipients = async (id) => {
 };
 
 // 롤링페이퍼 상세페이지 메세지 데이터 불러오기
-export const getDetailMessages = async (id, { limit, offset }) => {
+export const getDetailMessages = async (id, { limit = 8, offset = 0 }) => {
   const response = await instance.get(`/23-5/recipients/${id}/messages/`, {
     params: {
       limit,
@@ -67,10 +75,7 @@ export const loadBackgroundImg = async () => {
 }
 
 //생성된 롤링페이퍼 제출하기 
-
 export const submitNewRollingPaper = async (postData) =>{
   const response = await instance.post(`/23-5/recipients/`, postData);
   return response;
 }
-
-export default instance;
