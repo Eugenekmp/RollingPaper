@@ -39,6 +39,7 @@ function MessageForm() {
 
   //POST 요청 함수 (버튼 클릭시 발생), input 값들 저장
   const handleSubmit = async () => {
+    //disabled 상태라면 바로 return
     if (isDisabled) return;
 
     try {
